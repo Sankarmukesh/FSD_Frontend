@@ -134,7 +134,7 @@ const Login = () => {
                   
                  
                   <button
-                    className="full-width-button"
+                    className=""
                     type="submit"
                     disabled={!isFormValid || loading}
                     onClick={login}
@@ -145,6 +145,7 @@ const Login = () => {
                       gap: "3px",
                       justifyContent: "center",
                       alignItems: "center",
+                      width: '10px'
                       // borderRadius: "10px",
                     }}
                   >
@@ -165,10 +166,7 @@ const Login = () => {
                       </div>
                     ) : (
                       <>
-                        <i
-                          className="fas fa-sign-in-alt"
-                          style={{ marginRight: "5px", top: "-5px" }}
-                        ></i>{" "}
+                        
                         Login
                       </>
                     )}

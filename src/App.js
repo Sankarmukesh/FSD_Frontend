@@ -4,7 +4,7 @@ import {
   Routes,
 } from "react-router-dom";
 import "./App.css";
-import AuthHoc, { LoginAuth } from "./AuthHoc";
+import AuthHoc, { AdminDeciderHoc, LoginAuth } from "./AuthHoc";
 import Toast from "./Components/Toast/Toast";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,6 +15,7 @@ import { io } from "socket.io-client";
 
 import LoadingData from "./Components/Toast/Loading";
 import { socket_io } from "./Utils";
+import UserProfiles from "./Components/UserProfiles/UserProfiles";
 
 
 const SignUp = React.lazy(() => import("./Components/Signup/SignUp"));
@@ -32,9 +33,8 @@ const NoMatch = () => {
   return (
     <div className="noMatch">
       <div className="noRoute-image">
-        <img src="/no-route.gif" alt="gif" />
+        <img src="https://tse2.mm.bing.net/th?id=OIP.Jb4XrrIxatYfB2DQxV0TngHaFs&pid=Api&P=0" style={{objectFit: 'contain', mixBlendMode: 'multiply'}} alt="gif" />
       </div>
-      <div className="noRoute-text">Oops..! no such routes found.</div>
     </div>
   );
 };
@@ -75,30 +75,16 @@ const App = () => {
     });
   }, []);
 
-  // DONT REMOVE THIS IT IS FOR DARK AND WHITE THEME
-  //   useEffect(() => {
-  //     if (!localStorage.getItem('theme')) {
-  //       localStorage.setItem('theme', 'light')
-  //       document.body.setAttribute('data-theme', 'light')
-  //     } else {
-  //       document.body.setAttribute('data-theme', localStorage.getItem('theme'))
+  //IT IS FOR DARK AND WHITE THEME
+    useEffect(() => {
+      if (!localStorage.getItem('theme')) {
+        localStorage.setItem('theme', 'light')
+        document.body.setAttribute('data-theme', 'light')
+      } else {
+        document.body.setAttribute('data-theme', localStorage.getItem('theme'))
 
-  //    }
-  //  }, [])
-
-
-  // useEffect(() => {
-  //   socket.current.on("getNotification", () => {
-  //     dispatch(setNotification(true));
-
-  //   });
-  // }, []);
-
-
-
-
-
-
+     }
+   }, [])
   return (
     <div>
       <Suspense
@@ -123,6 +109,8 @@ const App = () => {
           <Route path="/forgotpassword" Component={LoginAuth(ForgotPassword)} />
           <Route path="*" element={<NoMatch />} />
           <Route path="/home" Component={AuthHoc(Home)} />
+          <Route path="/profiles" Component={AdminDeciderHoc(UserProfiles)} />
+
         </Routes>
       </Suspense>
     </div>

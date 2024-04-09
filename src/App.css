@@ -32,6 +32,10 @@ body[data-theme="dark"] {
   --userCard-boxshadow: #23232e;
   --messageNavbar-text: #fff;
   --singleUserCard-bg: #1c1b1b;
+  --user-filter-background: rgba(130, 124, 124, 0.297);
+    --user-filter-box-background: rgb(40, 39, 39);
+  --text: #040316;
+
 }
 
 body[data-theme="light"] {
@@ -44,6 +48,8 @@ body[data-theme="light"] {
   --button-hover: #4449ad;
   --tab-hover: #bec0e48a;
   --primary-light: #4e54c718;
+  --user-filter-background: rgba(130, 124, 124, 0.297);
+      --user-filter-box-background: rgb(249, 245, 245);
 
   --white-text: #fff;
   --light-transparent: #4e54c748;
@@ -56,7 +62,7 @@ body[data-theme="light"] {
   --nav-head-icons-hover: #4449ad;
   --navbar-profile-hover: #eaf1fb;
 
-  --body-background: #fbfbfe;
+  --body-background: #dbdbdd;
   --text-total-color: #040316;
   --singleUserCard-bg: #fff;
   --landingPage-working-container-bg: #f1f1f1;
@@ -147,8 +153,7 @@ label {
   margin-bottom: 10px;
 }
 
-input,
-select {
+input{
   width: 330px;
   outline: 0;
   padding: 15px;
@@ -477,8 +482,7 @@ input[type="radio"] + label {
     margin-left: 38%;
   }
 
-  input,
-  select {
+  input {
     width: 300px !important;
   }
 }

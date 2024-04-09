@@ -230,13 +230,14 @@ const Navbar = () => {
               Sign Out
             </div>
           </div>
-          <div style={{display: 'flex', gap: '15px'}}>
+          <div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>
             <div className="popupImg">
               {(image !== undefined && image !== "") ? <img
                 style={{
                   borderRadius: "50%",
                   cursor: "pointer",
                   maxWidth: "100%",
+                  height: '100px', width: '100px',
                   display: 'block'
                 }}
                 src={

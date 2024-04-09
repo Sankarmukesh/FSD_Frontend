@@ -282,7 +282,7 @@ const SignUp = () => {
                       )}
                     </>
                   )}
-                  <input
+                  <input onMouseOver={(e) => e.target.nextElementSibling.style.display = 'block'} onMouseLeave={(e) => e.target.nextElementSibling.style.display = 'none'}
                     type="password"
                     className={
                       isPasswordValid !== null &&
@@ -293,7 +293,7 @@ const SignUp = () => {
                     onChange={handleChanges}
                     placeholder="Create Password*"
                   />
-                  <div className="passwordHint">
+                  <div className="passwordHint" style={{display: 'none'}}>
                     <ul>
                       <li className={password?.length>=8 ? 'success' : 'failure'}>Password should be atleast 8 character length</li>
                       <li className={/.*[A-Z].*/.test(password) ? 'success' : 'failure'}>Atleast one capital letter</li>
@@ -315,6 +315,8 @@ const SignUp = () => {
                       gap: "3px",
                       justifyContent: "center",
                       alignItems: "center",
+                      float: 'right',
+                      width: '100%'
                       // borderRadius: "10px",
                     }}
                   >

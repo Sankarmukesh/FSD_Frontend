@@ -122,6 +122,66 @@ export const ApiServices = {
         .catch((err) => reject(err));
     });
   },
+  getProjects: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .get(`/projectDetails/getAllProjects`)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  deleteProject: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/projectDetails/deleteProject`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  getsingleProject: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/projectDetails/getsingleProject`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  addProject: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/projectDetails/addProject`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  updateProject: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/projectDetails/updateProject`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
   login: (obj) => {
     return new Promise((resolve, reject) => {
       axiosInstance
@@ -163,6 +223,30 @@ export const ApiServices = {
     return new Promise((resolve, reject) => {
       axiosInstance
         .post(`/userDetails/getUsers`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  getAllRoles: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .get(`/role/getAllRoles`)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  changeUserRoles: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userDetails/updateUserRole`, obj)
         .then((res) => {
           if (res) {
             resolve(res);
