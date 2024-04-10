@@ -28,7 +28,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
     }
     return (
     <div className='userStoryDetails'>
-            <div className='userStoryCard'>
+            <div className='userStoryCard' style={{ borderLeft: `3px solid ${taskStatuses.filter(f => f.status == au.status)[0]?.color}`}}>
                 <div style={{position: 'absolute', right: '8px', fontSize: '12px', cursor: 'pointer'}} onClick={(e)=>{
                     document.getElementById(`userStoryMenucard${au._id}`).classList.add('show')
                 }}>
@@ -46,7 +46,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                 <div onClick={() => {
                     navigate(`/userStory/${projectId}/${au._id}/edit`)
                 }} style={{display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer'}} className='textUnderLinehover'>
-                    <i class="fas fa-book-open" style={{ color: 'blue' }}></i><span style={{ width: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '18px', fontWeight: '600'}}>{au.name}</span>
+                    <i class="fas fa-book-open" style={{ color: taskStatuses.filter(f => f.status == au.status)[0]?.color }}></i><span style={{ width: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '18px', fontWeight: '600'}}>{au.name}</span>
                 </div>
                 <div onClick={() => {
                     navigate(`/userStory/${projectId}/${au._id}/edit`)
@@ -56,7 +56,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                 <div onClick={() => {
                     navigate(`/userStory/${projectId}/${au._id}/edit`)
                 }} style={{ display: 'flex', gap: '5px', alignItems: 'center', fontSize: '14px' }} className='textUnderLinehover'>
-                   <div className='' style={{borderRadius: '50%', height: '10px', width: '10px' ,background: taskStatuses.filter(f=>f.status==au.status)[0].color}}></div> <div>{au.status} </div>
+                   <div className='' style={{borderRadius: '50%', height: '10px', width: '10px' ,background: taskStatuses.filter(f=>f.status==au.status)[0]?.color}}></div> <div>{au.status} </div>
                 </div>
                 <div onClick={() => {
                     navigate(`/userStory/${projectId}/${au._id}/edit`)

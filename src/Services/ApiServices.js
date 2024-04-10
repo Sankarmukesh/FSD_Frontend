@@ -222,6 +222,138 @@ export const ApiServices = {
         .catch((err) => reject(err));
     });
   },
+
+  getUserStoryComments: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userStoryCommentDetails/getUserStoryComment`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
+  addUserStoryComments: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userStoryCommentDetails/addUserStoryComment`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
+  updateUserStoryComments: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userStoryCommentDetails/updateUserStoryComment`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
+
+  addTasks: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/taskdetails/addTask`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  updateTasks: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/taskdetails/updateTask`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
+
+  getSingleTasks: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/taskdetails/getSingleTask`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  deleteTasks: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/taskdetails/deleteTask`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
+
+  gettaskComments: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/taskCommentDetails/gettaskComment`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
+  addtaskComments: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/taskCommentDetails/addtaskComment`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
+  updatetaskComments: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/taskCommentDetails/updatetaskComment`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
   addUserStory: (obj) => {
     return new Promise((resolve, reject) => {
       axiosInstance

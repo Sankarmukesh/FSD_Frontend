@@ -5,13 +5,17 @@ import './UserStories.css'
 import { ApiServices } from '../../../Services/ApiServices';
 import { setToast } from '../../../redux/AuthReducers/AuthReducer';
 import { ToastColors } from '../../Toast/ToastColors';
-import { setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReducer';
+import { setcreateTaskItem, setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReducer';
 import IndividualUserStory from './IndividualUserStory';
 import CloseIcon from '@mui/icons-material/Close';
 import EditUserStory from './EditUserStory';
+import CreatetaskItem from '../Tasks/CreatetaskItem';
+import IndividualTaskCard from '../Tasks/IndividualTaskCard';
 const UserStories = () => {
   const project = useSelector(state => state.proj.projectId)
   const createWorkItem = useSelector(state => state.proj.createWorkItem)
+  const createTaskItem = useSelector(state => state.proj.createTaskItem)
+
   const [userStoryName, setUsereStoryName] = useState('')
   const [description, setdescription] = useState('')
   const [owner, setowner] = useState('')
@@ -120,7 +124,15 @@ const UserStories = () => {
            </div>}
           </div>
           {allUserStories?.map(au => (
-            <IndividualUserStory projectId={project._id}  au={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+            <div style={{display: 'flex', gap: '10px'}}>
+              <IndividualUserStory projectId={project._id} au={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+              <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
+                <CreatetaskItem users={users} userStory={au} setallUserStories={setallUserStories} projectId={project._id} allUserStories={allUserStories} />
+                {au.taskIds?.map(tasks => (
+                  <IndividualTaskCard tasks={tasks} projectId={project._id} userStory={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+                ))}
+              </div>
+            </div>
           ))}
         </>
       }

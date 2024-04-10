@@ -81,7 +81,7 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
         })
     }
     return (
-        <Dialog
+        <Dialog fullWidth
             open={open}
             onClose={handleClose}
             aria-labelledby="alert-dialog-title"
@@ -90,15 +90,15 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
         >
             <DialogTitle
                 id="alert-dialog-title"
-                style={{ display: "flex", justifyContent: "center" }}
+                style={{ display: "flex" }}
             >
-                <b> {"Adding Project"}</b>
+                <b> {type=='update'? "Updating Project" : "Adding Project"}</b>
             </DialogTitle>
             <DialogContent>
-                <DialogContentText id="alert-dialog-description">
+                <DialogContentText style={{ display: "flex", flexDirection: 'column', alignItems: 'flex-start' }}>
                     <label>Project Name</label>
-                    <input type="text" name="" id="" value={projectName} onChange={(e)=>setProjectName(e.target.value)} placeholder='Enter Project Name' />
-                    <button disabled={projectName == ''} style={{ padding: '5px' }} onClick={(Object.keys(selectedProject).length && type=='update') ? updateProject: addingProject}>{(Object.keys(selectedProject).length && type=='update') ? 'Update Project' : 'Add Project'}</button>
+                    <input style={{width: '100%'}} type="text" name="" id="" value={projectName} onChange={(e)=>setProjectName(e.target.value)} placeholder='Enter Project Name' />
+                    <button disabled={projectName == ''} style={{ padding: '5px', width: '100%' }} onClick={(Object.keys(selectedProject).length && type=='update') ? updateProject: addingProject}>{(Object.keys(selectedProject).length && type=='update') ? 'Update Project' : 'Add Project'}</button>
                 </DialogContentText>
             </DialogContent>
         </Dialog>

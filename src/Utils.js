@@ -50,3 +50,19 @@ export function formatDate(date) {
     }
 }
 
+export const dateDayStructure = (d) => {
+    const dateString = d;
+    const date = new Date(dateString);
+
+    // Get the month, day, and year
+    const month = date.toLocaleString('default', { month: 'long' });
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    // Format the date in "Month Day, Year" format
+    const formattedDate = `${month} ${day}, ${year}`;
+
+    return formattedDate; // Output: "April 20, 2024"
+
+}
+

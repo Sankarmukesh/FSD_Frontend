@@ -28,7 +28,7 @@
 }
 .userStoriesHeader, .userStoryDetails {
     display: flex;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .userStoriesHeader div {
@@ -47,11 +47,28 @@
     padding: 15px;
     width: 200px;
     height: auto;
+    max-height: 200px;
         background: var(--userstories-header);
-        border-left: 3px solid rgb(114, 114, 219);
+        /* border-left: 3px solid rgb(114, 114, 219); */
         border-radius: 10px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
+
+}
+.taskCard{
+     display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 3px;
+    justify-content: flex-start;
+    padding: 15px;
+    width: 200px;
+        background: var(--userstories-header);
+        /* border-left: 3px solid orange !important; */
+        border-radius: 10px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+       height: auto !important;
+    max-height: 400px !important;
 
 }
 
@@ -131,4 +148,20 @@
 }
 .showuserStoryEditAllUserBox, .showuserStoryEditStatus{
     display: block !important;
+}
+
+
+
+
+.detailsContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftDetailsContainer{
+    flex: 90%;
+}
+
+.rightDetailsContainer{
+    flex: 50%;
 }
