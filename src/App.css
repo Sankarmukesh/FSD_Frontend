@@ -6,6 +6,7 @@ body[data-theme="dark"] {
   --body-background: #17171e;
   --nabar-text: #fff;
   --text-total-color: #fff;
+  --button--color: #fff;
   --navbar-profile-hover: #2172e2;
   /* --nav-head-bg: #212130; */
     --nav-head-selected-icons-border: #a7a7ae;
@@ -35,11 +36,15 @@ body[data-theme="dark"] {
   --user-filter-background: rgba(130, 124, 124, 0.297);
     --user-filter-box-background: rgb(40, 39, 39);
   --text: #040316;
+    --button: #4e54c7;
+
 
 }
 
 body[data-theme="light"] {
   /* LATEST THEME BASED COLORS */
+    --button--color: #fff;
+
   --text: #040316;
   --background: #fbfbfe;
   --primary: #4e54c7;
@@ -220,7 +225,7 @@ button {
   background-color: var(--button);
   font-weight: 600;
   transition: background-color 0.3s ease;
-  color: #fff;
+  color: var(--button--color);
   border: none;
   border-radius: 3px;
   cursor: pointer;

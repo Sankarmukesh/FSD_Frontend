@@ -106,7 +106,7 @@ const ProfileImageUpdate = ({ open, setOpen}) => {
     
       };
   return (
-    <Dialog
+    <Dialog fullWidth
       open={open}
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"

@@ -303,11 +303,11 @@ img {
 }
 .Navusername{
    font-size: 20px;
-  color: var(--text);
+  color: var(--text-total-color);
 }
 .Navemail{
   font-size: 12px;
-  color: var(--text);
+  color: var(--text-total-color);
 }
 .Navrole{
   font-size: 12px;
