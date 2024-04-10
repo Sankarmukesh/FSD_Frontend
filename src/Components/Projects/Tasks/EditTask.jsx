@@ -100,7 +100,7 @@ const EditTask = ({ }) => {
             dispatch(
                 setToast({
                     message: "User Story updated",
-                    bgColor: ToastColors.Success,
+                    bgColor: ToastColors.success,
                     visible: "yes",
                 })
             );
@@ -213,7 +213,7 @@ const EditTask = ({ }) => {
                     }
                 </div>
                 <div className='detailsContainer'>
-                    <div className=''>
+                    <div className='' style={{flex: '1'}}>
                         <div>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '10px', padding: '10px' }}>
                                 <label>Description</label>
