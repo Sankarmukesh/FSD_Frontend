@@ -7,7 +7,7 @@ import { ApiServices } from '../../../Services/ApiServices';
 import { setToast } from '../../../redux/AuthReducers/AuthReducer';
 import { ToastColors } from '../../Toast/ToastColors';
 import NameGenerator from '../../Common/NameGenerator';
-import { taskStatuses } from '../../../Utils';
+import { formatDate, taskStatuses } from '../../../Utils';
 import { Label } from '@mui/icons-material';
 
 const EditUserStory = ({ }) => {
@@ -140,25 +140,30 @@ const EditUserStory = ({ }) => {
                               </div>
                           </div>
 
-                          <div style={{ display: 'flex', gap: '5px', alignItems: 'center', fontSize: '16px', marginTop: '10px', position: 'relative' }}>
-                              <div style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} onClick={() => {
-                                  document.getElementsByClassName('userStoryEditStatus')[0].classList.add('showuserStoryEditStatus')
-                              }}>
-                                  <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == userStory?.status)[0].color }}></div> <div>{userStory?.status} <i className='fas fa-caret-down'></i></div>
-                              </div>
-                              <div className='userStoryEditStatus' style={{ display: 'none', cursor: 'pointer' }}
-                                  onMouseLeave={() => {
-                                      document.getElementsByClassName('userStoryEditStatus')[0].classList.remove('showuserStoryEditStatus')
-                              }}
-                              >
-                                  {taskStatuses?.map(d => (
-                                      <div onClick={(e) => {
-                                          setUserStory((prev) => ({ ...prev, status: d.status }))
+                          <div style={{ display: 'flex',justifyContent: 'space-between', alignItems: 'center', fontSize: '16px', marginTop: '10px', position: 'relative' }}>
+                              <div>
+                                  <div style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} onClick={() => {
+                                      document.getElementsByClassName('userStoryEditStatus')[0].classList.add('showuserStoryEditStatus')
+                                  }}>
+                                      <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == userStory?.status)[0].color }}></div> <div>{userStory?.status} <i className='fas fa-caret-down'></i></div>
+                                  </div>
+                                  <div className='userStoryEditStatus' style={{ display: 'none', cursor: 'pointer' }}
+                                      onMouseLeave={() => {
                                           document.getElementsByClassName('userStoryEditStatus')[0].classList.remove('showuserStoryEditStatus')
-                                      }}>
-                                          {d.status}
-                                      </div>
-                                  ))}
+                                      }}
+                                  >
+                                      {taskStatuses?.map(d => (
+                                          <div onClick={(e) => {
+                                              setUserStory((prev) => ({ ...prev, status: d.status }))
+                                              document.getElementsByClassName('userStoryEditStatus')[0].classList.remove('showuserStoryEditStatus')
+                                          }}>
+                                              {d.status}
+                                          </div>
+                                      ))}
+                                  </div>
+                              </div>
+                              <div>
+                                  Updated by {userStory?.lastUpdatedBy?.userName}, {formatDate(userStory?.updatedAt)}
                               </div>
                           </div>
 

@@ -30,13 +30,23 @@ export const convertToDate = (inputDate) => {
 
 
 // gives in format 2024-jan-08
-export const formatedDate = (inputDate) => {
-    const months = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ];
-    const date = inputDate?.split('-')[1][0] == '0' ? inputDate?.split('-')[1][1] - 1 : inputDate?.split('-')[1] - 1
-    return `${inputDate?.split('-')[2].slice(0, 2)} ${months[date]} ${inputDate?.split('-')[0]}`
+export function formatDate(date) {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
 
+    const inputDate = new Date(date);
+
+    if (inputDate.toDateString() === today.toDateString()) {
+        return "Today " + inputDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } else if (inputDate.toDateString() === yesterday.toDateString()) {
+        return "Yesterday";
+    } else if (inputDate.toDateString() === tomorrow.toDateString()) {
+        return "Tomorrow";
+    } else {
+        return moment(inputDate).format("YYYY-MM-DD");
+    }
 }
 
