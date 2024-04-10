@@ -35,7 +35,7 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
                 setdescription('')
                 setowner('')
                 setCreateTask(false)
-                document.getElementById('due').value=''
+                setdue('')
             }).catch(err => {
                 dispatch(setToast({
                     message: err.response.data.message,
@@ -72,7 +72,7 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
                           <span>
                               Due
                           </span>
-                          <input min={new Date().toISOString().split('T')[0]} type="date" name="" id="due" onChange={(e)=>setdue(e.target.value)} style={{width: '90%'}}/>
+                          <input min={new Date().toISOString().split('T')[0]} type="date" name="" id="due" value={due} onChange={(e)=>setdue(e.target.value)} style={{width: '90%'}}/>
                       </div>
                   <div>
                       <select style={{ width: '96%', padding: '10px 0px', border: 'none', cursor: 'pointer' }} name="" id="" onChange={(e) => {

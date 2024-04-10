@@ -205,9 +205,15 @@ const EditTask = ({ }) => {
                                 <div>
                                     Updated by {IndividualTask?.lastUpdatedBy?.userName}, {formatDate(IndividualTask?.updatedAt)}
                                 </div>
+                               
                             </div>
 
-
+                            <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                                <span>
+                                    Due date
+                                </span>
+                                <input min={new Date().toISOString().split('T')[0]} style={{width: '299px'}} type="date" name="" id="due" value={IndividualTask?.due} onChange={(e) => setIndividualTask((prev) => ({ ...prev, due: e.target.value }))} />
+                            </div>
 
                         </div>
                     }
