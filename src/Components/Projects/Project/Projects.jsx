@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import './Projects.css'
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import AddProjectPopup from './AddProjectPopup';
+import { setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReducer';
 const Projects = () => {
   const { email, image, user_id, userName, role } = useSelector(
     (store) => store.auth.loginDetails
@@ -50,7 +51,9 @@ const Projects = () => {
     if (localStorage.getItem('project')) {
       setSelectedProject(JSON.parse(localStorage.getItem('project')))
     } else {
-      setSelectedProject(allProjects[0])
+      if (allProjects.length > 0) {
+        setSelectedProject(allProjects[0])
+      }
     }
   }, [allProjects])
 
@@ -89,10 +92,11 @@ const Projects = () => {
         }}>
             <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}><AccountTreeIcon /><span style={{fontSize: '20px', fontWeight: '400'}}>{selectedProject?.name}</span> </div><div><i class="fas fa-caret-down"></i></div>
         </div>
-          <div className='projectDetails' style={{ display: 'none', cursor: 'pointer' }} ref={projectDetailsRef}>
+          <div className='projectDetails' style={{ display: 'none', zIndex: '1000' }} ref={projectDetailsRef}>
             {allProjects.map(d => (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}><div onClick={(e) => {
-               
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}><div onClick={(e) => {
+                localStorage.setItem('project', JSON.stringify(d));
+                setSelectedProject(d);
                 document.getElementsByClassName('projectDetails')[0].classList.remove('showprojectDetails');
               } }>
                 {d.name}
@@ -118,12 +122,18 @@ const Projects = () => {
         </>
         : <div style={{width: '100%'}}>No Projects created</div>
       }
-      {role == 'Admin' && <button style={{ padding: '10px', whiteSpace: 'nowrap' }} onClick={() => {
-        setType('add')
+      <div style={{display: 'flex', gap: '10px'}}>
+        {role == 'Admin' && <button style={{ padding: '10px', whiteSpace: 'nowrap' }} onClick={() => {
+          setType('add')
 
-        setAddPopupopen(true)
-      }}>Add Project</button>
-}
+          setAddPopupopen(true)
+        }}>Add Project</button>
+        }
+        {Object.keys(selectedProject).length > 0 && <button style={{ padding: '10px', whiteSpace: 'nowrap' }} onClick={() => {
+          dispatch(setcreateWorkItem(true))
+        }}>Add Work Item</button>
+        }
+      </div>
       <AddProjectPopup type={type} open={addPopupopen} setOpen={setAddPopupopen} setAllProjects={setAllProjects} selectedProject={selectedProject} allProjects={allProjects} setSelectedProject={setSelectedProject} />
     </div>
   )

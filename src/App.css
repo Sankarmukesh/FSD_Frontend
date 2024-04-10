@@ -50,6 +50,8 @@ body[data-theme="light"] {
   --primary-light: #4e54c718;
   --user-filter-background: rgba(130, 124, 124, 0.297);
       --user-filter-box-background: rgb(249, 245, 245);
+--singleUserCard-bg: #fff;
+--userstories-header: #fff;
 
   --white-text: #fff;
   --light-transparent: #4e54c748;
@@ -63,8 +65,7 @@ body[data-theme="light"] {
   --navbar-profile-hover: #eaf1fb;
 
   --body-background: #dbdbdd;
-  --text-total-color: #040316;
-  --singleUserCard-bg: #fff;
+  --text-total-color: #48484a;
   --landingPage-working-container-bg: #f1f1f1;
   --user-details-container-bg: #e2e5e8;
   --menubar-bg: #fbfbfe;
@@ -86,7 +87,7 @@ body[data-theme="light"] {
 
 body {
   background: var(--body-background);
-  color: var(--text-total-color);
+  color: var(--text-total-color) !important;
 }
 i {
   cursor: pointer;

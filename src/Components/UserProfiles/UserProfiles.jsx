@@ -18,11 +18,11 @@ const UserProfiles = () => {
          ApiServices.getAllUsers({ type: '' }).then(res => {
                 setUsers(res.data)
          }).catch(err => {
-             setToast({
+             dispatch(setToast({
                  message: "Error occured !",
                  bgColor: ToastColors.failure,
                  visible: "yes",
-             })
+             }))
         })
     }, [])
 

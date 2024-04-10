@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApiServices } from '../../../Services/ApiServices';
 import { setToast } from '../../../redux/AuthReducers/AuthReducer';
 import { ToastColors } from '../../Toast/ToastColors';
+import { setProjectId } from '../../../redux/ProjectsReducers/ProjectReducer';
 
 
 const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject, allProjects , setSelectedProject}) => {
@@ -15,11 +16,14 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
 
     const [projectName, setProjectName] = useState('')
     useEffect(() => {
+        dispatch(
+            setProjectId(selectedProject)
+        );
         if (Object.keys(selectedProject).length>0 && type=='update') {
-                setProjectName(selectedProject.name)
+            setProjectName(selectedProject.name)
         } else {
             setProjectName('')
-
+            setProjectId({})
         }
     }, [selectedProject, type])
     const handleClose = () => {

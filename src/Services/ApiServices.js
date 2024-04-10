@@ -182,6 +182,74 @@ export const ApiServices = {
         .catch((err) => reject(err));
     });
   },
+
+
+
+
+  getUserStoryBasedOnProject: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userStoryDetails/getAllUserStories`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  deleteUserStory: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userStoryDetails/deleteUserStory`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  getsingleUserStory: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userStoryDetails/getSingleUserStory`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  addUserStory: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userStoryDetails/addUserStory`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+  updateUserStory: (obj) => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .post(`/userStoryDetails/updateUserStory`, obj)
+        .then((res) => {
+          if (res) {
+            resolve(res);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  },
+
+
+
+
   login: (obj) => {
     return new Promise((resolve, reject) => {
       axiosInstance

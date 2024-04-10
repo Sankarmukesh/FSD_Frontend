@@ -16,6 +16,7 @@ import { io } from "socket.io-client";
 import LoadingData from "./Components/Toast/Loading";
 import { socket_io } from "./Utils";
 import UserProfiles from "./Components/UserProfiles/UserProfiles";
+import EditUserStory from "./Components/Projects/UserStories/EditUserStory";
 
 
 const SignUp = React.lazy(() => import("./Components/Signup/SignUp"));
@@ -110,6 +111,8 @@ const App = () => {
           <Route path="*" element={<NoMatch />} />
           <Route path="/home" Component={AuthHoc(Home)} />
           <Route path="/profiles" Component={AdminDeciderHoc(UserProfiles)} />
+          <Route path="/userStory/:projectId/:userStoryId/edit" Component={AuthHoc(EditUserStory)} />
+
 
         </Routes>
       </Suspense>

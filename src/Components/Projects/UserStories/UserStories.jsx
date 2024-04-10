@@ -1,8 +1,130 @@
-import React from 'react'
-
+import React, { useEffect, useRef, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { taskStatuses } from '../../../Utils';
+import './UserStories.css'
+import { ApiServices } from '../../../Services/ApiServices';
+import { setToast } from '../../../redux/AuthReducers/AuthReducer';
+import { ToastColors } from '../../Toast/ToastColors';
+import { setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReducer';
+import IndividualUserStory from './IndividualUserStory';
+import CloseIcon from '@mui/icons-material/Close';
+import EditUserStory from './EditUserStory';
 const UserStories = () => {
+  const project = useSelector(state => state.proj.projectId)
+  const createWorkItem = useSelector(state => state.proj.createWorkItem)
+  const [userStoryName, setUsereStoryName] = useState('')
+  const [description, setdescription] = useState('')
+  const [owner, setowner] = useState('')
+  const { email, user_id } = useSelector((store) => store.auth.loginDetails);
+  const [users, setUsers] = useState([])
+  const textAreaRef = useRef(null)
+
+  useEffect(() => {
+    if (createWorkItem) {
+      textAreaRef?.current?.focus()
+    }
+  }, [createWorkItem])
+
+
+  const dispatch = useDispatch()
+
+  const [allUserStories, setallUserStories] = useState([])
+  useEffect(() => {
+    if (project._id !== undefined) {
+      ApiServices.getUserStoryBasedOnProject({ projectId: project._id }).then(res => {
+        console.log(res.data)
+        setallUserStories(res.data)
+      }).catch(err => {
+        dispatch(setToast({
+          message: "Error occured !",
+          bgColor: ToastColors.failure,
+          visible: "yes",
+        }))
+      })
+    }
+  }, [project._id])
+  useEffect(() => {
+    ApiServices.getAllUsers({ type: '' }).then(res => {
+      setUsers(res.data)
+    }).catch(err => {
+      dispatch(setToast({
+        message: "Error occured !",
+        bgColor: ToastColors.failure,
+        visible: "yes",
+      }))
+    })
+  }, [])
+
+  
+  const addUserStory = async () => {
+    if (userStoryName !== '' && project._id !== undefined && owner!=='') {
+      await ApiServices.addUserStory({ projectId: project._id, name: userStoryName, description: description, owner: owner, user_id: user_id }).then(res => {
+        setallUserStories(prev => [...prev, res.data])
+        dispatch(setcreateWorkItem(false))
+        setUsereStoryName('')
+        setdescription('')
+        setowner('')
+      }).catch(err => {
+        dispatch(setToast({
+          message: err.response.data.message,
+          bgColor: ToastColors.failure,
+          visible: "yes",
+        }))
+      })
+    } else {
+      alert('Please fill owner, name to save data')
+    }
+  }
   return (
-    <div>UserStories</div>
+    <div style={{ padding: '10px' }} className='userStoriesHeaderContainer'>
+      {
+        project._id !== undefined &&
+        <><div className='userStoriesHeader'>
+          <div>User Stories</div>
+          {taskStatuses.map(ts => (
+            <div>{ts.status}</div>
+          ))}
+
+        </div>
+          <div className='userStoryDetails'>
+            {createWorkItem == true &&
+              <div className='userStoryCard'>
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                  <CloseIcon style={{cursor: 'pointer', fontSize: '18px'}} onClick={() => {
+                    setUsereStoryName('')
+                    setdescription('')
+                    setowner('')
+                    dispatch(setcreateWorkItem(false))
+                  }} />
+                </div>
+                <div >
+                  <textarea ref={textAreaRef} placeholder='Enter name' rows={5} columns={6} value={userStoryName} onChange={(e) => { setUsereStoryName(e.target.value) }}></textarea>
+                  
+                </div>
+                <div>
+                  <textarea placeholder='Description' rows={5} columns={6} value={description} onChange={(e) => { setdescription(e.target.value) }}></textarea>
+                </div>
+                <div>
+                  <select style={{width: '96%', padding: '10px 0px', border: 'none', cursor: 'pointer'}} name="" id="" onChange={(e) => {
+                    setowner(e.target.value)
+                  }}>
+                    <option value=''>Select Owner</option>
+                    {users.map(op => (
+                      <option value={op._id}>{op.userName}</option>
+                    ))}
+                  </select>
+                </div>
+                <div onClick={addUserStory} style={{ alignSelf: 'flex-end', background: 'rgb(114, 114, 219)', borderRadius: '50%', cursor: 'pointer', width: '30px', marginTop: '10px', color: 'white', textAlign: 'center',  padding: '5px', display: (userStoryName !== '' && project._id !== undefined && owner !== '')?'block':'none'}}>
+                  <i className='fas fa-plus'></i>
+                </div>
+           </div>}
+          </div>
+          {allUserStories?.map(au => (
+            <IndividualUserStory projectId={project._id}  au={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+          ))}
+        </>
+      }
+   </div>
   )
 }
 
