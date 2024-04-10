@@ -51,7 +51,7 @@ const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, al
                 </div>
                 <div onClick={() => {
                     navigate(`/task/${projectId}/${userStory._id}/${tasks._id}/edit`)
-                }} className='textUnderLinehover' style={{ fontSize: '14px' }}>
+                }} className='textUnderLinehover' style={{ fontSize: '14px', width: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', }}>
                     {tasks.description}
                 </div>
                 <div onClick={() => {

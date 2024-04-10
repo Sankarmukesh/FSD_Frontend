@@ -50,7 +50,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                 </div>
                 <div onClick={() => {
                     navigate(`/userStory/${projectId}/${au._id}/edit`)
-                }} className='textUnderLinehover' style={{fontSize: '14px'}}>
+                }} className='textUnderLinehover' style={{ fontSize: '14px', width: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
                    {au.description}
                 </div>
                 <div onClick={() => {
