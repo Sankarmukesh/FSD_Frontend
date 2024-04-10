@@ -4,15 +4,15 @@ import moment from "moment"
 export const socket_io = process.env.REACT_APP_SOCKET_IO
 
 export const taskStatuses = [
-    { color: '#0078D4', status: 'New' }, // Blue
-    { color: '#FF8C00', status: 'Active' }, // Orange
-    { color: '#FF0000', status: 'Failed' }, // Red
-    { color: '#00FF00', status: 'Fixed' }, // Green
-    { color: '#FFFF00', status: 'Assigned/Fix-In-Progress' }, // Yellow
-    { color: '#FFD700', status: 'Ready For Retest' }, // Gold
-    { color: '#32CD32', status: 'Resolved' }, // Lime Green
-    { color: '#808080', status: 'Deferred' }, // Gray
-    { color: '#A9A9A9', status: 'Closed' } // Dark Gray
+    { color: '#0078D4', status: 'New', left: '0'}, // Blue
+    { color: '#FF8C00', status: 'Active', left: '150px' }, // Orange
+    { color: '#FF0000', status: 'Failed', left: '280px' }, // Red
+    { color: '#00FF00', status: 'Fixed', left: '400px' }, // Green
+    { color: '#FFFF00', status: 'Assigned/Fix-In-Progress', left: '550px' }, // Yellow
+    { color: '#FFD700', status: 'Ready For Retest', left: '850px' }, // Gold
+    { color: '#32CD32', status: 'Resolved', left: '1050px' }, // Lime Green
+    { color: '#808080', status: 'Deferred', left: '1250px' }, // Gray
+    { color: '#A9A9A9', status: 'Closed', left: '1350px' } // Dark Gray
 ];
 
 
