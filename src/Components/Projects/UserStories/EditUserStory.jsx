@@ -274,7 +274,7 @@ const EditUserStory = ({ }) => {
                       <div style={{ display: 'flex', gap: '8px', flexDirection: 'column' }}>
                           { userStory?.taskIds?.length > 0 && <div style={{fontSize: '18px', fontWeight: '600'}}>Associated Tasks</div>}
                           {userStory?.taskIds?.map(ts => (
-                              <div style={{display: 'flex', gap: '5px'}}>
+                              <div style={{ display: 'flex', gap: '5px', cursor: 'pointer' }} onClick={() => navigate(`/task/${projectId}/${userStory._id}/${ts._id}/edit`)}>
                                   <div>
                                       {(ts?.owner?.image !== undefined && ts?.owner?.image.url !== "") ? <img
                                           style={{
