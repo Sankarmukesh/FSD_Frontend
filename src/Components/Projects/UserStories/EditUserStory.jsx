@@ -80,7 +80,7 @@ const EditUserStory = ({ }) => {
 
     const addUserStoryComment = async () => {
         await ApiServices.addUserStoryComments({ userStoryId: userStoryId, comment: newComment, commentBy: user_id }).then(res => {
-            setUserStoryComment(prev => [...prev, res.data])
+            setUserStoryComment(prev => [res.data, ...prev])
             setNewComment('')
         }).catch(err => {
             dispatch(

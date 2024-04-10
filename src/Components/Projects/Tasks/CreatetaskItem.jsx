@@ -30,7 +30,7 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
         // projectId: projectId, userStoryId: userStoryId, name: name, description, owner, createdBy: user_id, status: 'New', due 
         if (taskName !== '' && projectId !== undefined && owner !== '') {
             await ApiServices.addTasks({ userStoryId:userStory._id, projectId: projectId, name: taskName, description: description, owner: owner, user_id: user_id, due: due }).then(res => {
-                setallUserStories(allUserStories.map(al => al._id == userStory._id? {...al, taskIds:[...al.taskIds, res.data]} : al))
+                setallUserStories(allUserStories.map(al => al._id == userStory._id ? { ...al, taskIds: [res.data, ...al.taskIds]} : al))
                 setTaskName('')
                 setdescription('')
                 setowner('')

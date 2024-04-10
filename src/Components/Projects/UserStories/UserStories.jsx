@@ -14,7 +14,6 @@ import IndividualTaskCard from '../Tasks/IndividualTaskCard';
 const UserStories = () => {
   const project = useSelector(state => state.proj.projectId)
   const createWorkItem = useSelector(state => state.proj.createWorkItem)
-  const createTaskItem = useSelector(state => state.proj.createTaskItem)
 
   const [userStoryName, setUsereStoryName] = useState('')
   const [description, setdescription] = useState('')
@@ -63,7 +62,7 @@ const UserStories = () => {
   const addUserStory = async () => {
     if (userStoryName !== '' && project._id !== undefined && owner!=='') {
       await ApiServices.addUserStory({ projectId: project._id, name: userStoryName, description: description, owner: owner, user_id: user_id }).then(res => {
-        setallUserStories(prev => [...prev, res.data])
+        setallUserStories(prev => [res.data, ...prev])
         dispatch(setcreateWorkItem(false))
         setUsereStoryName('')
         setdescription('')

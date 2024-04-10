@@ -80,7 +80,7 @@ const EditTask = ({ }) => {
 
     const addTaskComment = async () => {
         await ApiServices.addtaskComments({ taskId: taskId, comment: newComment, commentBy: user_id }).then(res => {
-            setIndividualTaskComment(prev => [...prev, res.data])
+            setIndividualTaskComment(prev => [res.data, ...prev ])
             setNewComment('')
         }).catch(err => {
             dispatch(
