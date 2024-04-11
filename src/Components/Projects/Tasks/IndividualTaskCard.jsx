@@ -56,7 +56,7 @@ const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, al
                 </div>
                 <div onClick={() => {
                     navigate(`/task/${projectId}/${userStory._id}/${tasks._id}/edit`)
-                }} style={{ display: 'flex', gap: '5px', alignItems: 'center', fontSize: '14px' }} className='textUnderLinehover'>
+                }} style={{ display: 'flex', gap: '5px', alignItems: 'center', fontSize: '12px' }} className='textUnderLinehover'>
                     <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == tasks?.status)[0]?.color }}></div> <div>{tasks?.status} </div>
                 </div>
                 <div onClick={() => {
@@ -79,8 +79,8 @@ const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, al
 
                     </div>
                     <div>
-                        <div>{tasks.owner.userName}</div>
-                        <div>Due date- {dateDayStructure(tasks.due)}</div>
+                        <div style={{fontSize: '10px'}}>{tasks.owner.userName}</div>
+                        <div style={{ fontSize: '10px' }}>Due date- {dateDayStructure(tasks.due)}</div>
                     </div>
                 </div>
 

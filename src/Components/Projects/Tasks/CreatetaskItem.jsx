@@ -53,14 +53,7 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
           {createTask ?
               <div className='userStoryDetails'>
                   <div className='userStoryCard taskCard'>
-                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                      <CloseIcon style={{ cursor: 'pointer', fontSize: '18px' }} onClick={() => {
-                          setTaskName('')
-                          setdescription('')
-                          setowner('')
-                          setCreateTask(false)
-                      }} />
-                  </div>
+                  
                   <div >
                       <textarea ref={textAreaRef} placeholder='Enter name' rows={5} columns={6} value={taskName} onChange={(e) => { setTaskName(e.target.value) }}></textarea>
 
@@ -68,14 +61,12 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
                   <div>
                       <textarea placeholder='Description' rows={5} columns={6} value={description} onChange={(e) => { setdescription(e.target.value) }}></textarea>
                       </div>
-                      <div style={{display: 'flex', gap:'5px'}}>
-                          <span>
-                              Due
-                          </span>
+                      <div style={{ display: 'flex', gap: '5px', width: '96%', padding: '2px 0px', border: 'none', borderRadius: '5px', }}>
+                          
                           <input min={new Date().toISOString().split('T')[0]} type="date" name="" id="due" value={due} onChange={(e)=>setdue(e.target.value)} style={{width: '90%'}}/>
                       </div>
                   <div>
-                      <select style={{ width: '96%', padding: '10px 0px', border: 'none', cursor: 'pointer' }} name="" id="" onChange={(e) => {
+                          <select style={{ width: '96%', padding: '8px 0px', border: 'none', borderRadius: '5px', cursor: 'pointer' }} name="" id="" onChange={(e) => {
                           setowner(e.target.value)
                       }}>
                           <option value=''>Select Owner</option>
@@ -83,14 +74,25 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
                               <option value={op._id}>{op.userName}</option>
                           ))}
                       </select>
-                  </div>
-                  <div onClick={addTask} style={{ alignSelf: 'flex-end', background: 'rgb(114, 114, 219)', borderRadius: '50%', cursor: 'pointer', width: '30px', marginTop: '10px', color: 'white', textAlign: 'center', padding: '5px', display: (taskName !== '' && projectId !== undefined && owner !== '' && due!=='') ? 'block' : 'none' }}>
-                      <i className='fas fa-plus'></i>
-                  </div>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', margin: '5px' }}>
+                          <div>
+                              <button style={{ padding: '5px' }} onClick={() => {
+                                  setTaskName('')
+                                  setdescription('')
+                                  setowner('')
+                                  setCreateTask(false)
+                              }}>Close</button>
+                          </div>
+                          <div style={{ display: (taskName !== '' && projectId !== undefined && owner !== '' && due !== '') ? 'block' : 'none' }}>
+                              <button style={{ padding: '5px', width: '50px' }} onClick={addTask}>Add</button>
+                          </div>
+                      </div>
+                  
                   </div>
               </div>
            :
-              <button style={{ height: '30px', width: '50px', padding: '10px' }} onClick={()=>setCreateTask(true)}>Add Task</button>}
+              <button style={{ height: '30px', width: '50px', padding: '5px' }} onClick={()=>setCreateTask(true)}>Add Task</button>}
       </div>
   )
 }

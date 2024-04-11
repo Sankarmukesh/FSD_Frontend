@@ -40,7 +40,7 @@ const UserProfileFilters = ({ setValue, data, value }) => {
                       setValue(d)
                       document.getElementsByClassName('filterBoxData')[0].classList.remove('showfilterBoxData')
                   }}>
-                   {d}
+                      <span style={{ whiteSpace: 'nowrap', width: '80px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{d}</span>
                   </div>
               ))}
           </div>

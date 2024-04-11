@@ -38,7 +38,7 @@
 }
 
 .userStoriesHeader div {
-    background: var(--userstories-header);
+    background: var(--status-header-bg);
     padding: 15px 50px;
     width: 250px;
     justify-self: flex-start;
@@ -53,11 +53,12 @@
     padding: 15px;
     width: 200px;
     height: auto;
+    border-radius: 10px;
     max-height: 200px;
-        background: var(--userstories-header);
+        background: var(--addingCard-bg);
         /* border-left: 3px solid rgb(114, 114, 219); */
-        border-radius: 10px;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        /* border-radius: 10px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 
 
 }
@@ -72,7 +73,7 @@
         background: var(--userstories-header);
         /* border-left: 3px solid orange !important; */
         border-radius: 10px;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
        height: auto !important;
     max-height: 400px !important;
 
@@ -104,7 +105,7 @@
     display: block !important;
 }
 .userStoryDetails .userStoryCard textarea {
-    height: 30px;
+    height: 20px;
     padding: 5px;
     width: 90%;
     border: 2px solid black;

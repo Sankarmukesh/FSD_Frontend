@@ -40,8 +40,8 @@ const UserCard = ({ d, allRoles }) => {
               alt="Profile"
           /> : <NameGenerator userName={d.userName} sizes={{ height: '80px', width: '80px', fontSize: '26px' }} />}
           <div>
-              <div style={{ textOverflow: 'ellipsis' }} className='cardEmail'>{d.email}</div>
-              <div className='cardEmail'>{d.userName}</div>
+              <div style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }} className='cardEmail'>{d.email}</div>
+              <div className='cardEmail' style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{d.userName}</div>
               <div className=''>
                   <select name="" id="" onChange={(e) => {
                       setUpdatedRole(e.target.value)
@@ -52,7 +52,7 @@ const UserCard = ({ d, allRoles }) => {
                   </select>
               </div>
               <div>
-                  <button className='userCardBtn' disabled={updatedRole == ''} style={{ padding: '5px',  marginTop: '5px'}} onClick={updatedRole!=='' && updateRole}>Update Role</button>
+                  <button disabled={updatedRole == ''} style={{ padding: '5px',  marginTop: '5px'}} onClick={updatedRole!=='' && updateRole}>Update Role</button>
               </div>
           </div>
     </div>

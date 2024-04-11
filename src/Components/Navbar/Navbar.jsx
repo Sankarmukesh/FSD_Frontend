@@ -215,21 +215,6 @@ const Navbar = () => {
         </div>
         <div className="userDetails" ref={userDetailsRef}>
           <span className="line-loader"></span>
-          <div style={{display: 'flex', justifyContent: 'flex-end', cursor: 'pointer'}} onClick={() => {
-            // setLogoutPopupOpen(true)
-            logoutDecider('All')
-          }}>
-            <div style={{display: 'flex', alignItems: 'center'}}>
-              <i
-                className="fas fa-sign-out-alt"
-                style={{ marginRight: "5px" }}
-              ></i>{" "}
-            </div>
-            <div>
-
-              Sign Out
-            </div>
-          </div>
           <div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>
             <div className="popupImg">
               {(image !== undefined && image !== "") ? <img
@@ -255,6 +240,21 @@ const Navbar = () => {
               <div className="Navusername">{userName}</div>
               <div className="Navemail">{email}</div>
               <div className="Navrole">{role}</div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', cursor: 'pointer' }} onClick={() => {
+            // setLogoutPopupOpen(true)
+            logoutDecider('All')
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <i
+                className="fas fa-sign-out-alt"
+                style={{ marginRight: "5px" }}
+              ></i>{" "}
+            </div>
+            <div>
+
+              Sign Out
             </div>
           </div>
         </div>

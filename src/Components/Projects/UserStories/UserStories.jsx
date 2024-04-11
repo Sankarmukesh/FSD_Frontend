@@ -92,14 +92,7 @@ const UserStories = () => {
           <div className='userStoryDetails'>
             {createWorkItem == true &&
               <div className='userStoryCard'>
-                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                  <CloseIcon style={{cursor: 'pointer', fontSize: '18px'}} onClick={() => {
-                    setUsereStoryName('')
-                    setdescription('')
-                    setowner('')
-                    dispatch(setcreateWorkItem(false))
-                  }} />
-                </div>
+                
                 <div >
                   <textarea ref={textAreaRef} placeholder='Enter name' rows={5} columns={6} value={userStoryName} onChange={(e) => { setUsereStoryName(e.target.value) }}></textarea>
                   
@@ -108,7 +101,7 @@ const UserStories = () => {
                   <textarea placeholder='Description' rows={5} columns={6} value={description} onChange={(e) => { setdescription(e.target.value) }}></textarea>
                 </div>
                 <div>
-                  <select style={{width: '96%', padding: '10px 0px', border: 'none', cursor: 'pointer'}} name="" id="" onChange={(e) => {
+                  <select style={{ width: '96%', padding: '8px 0px', border: 'none', borderRadius: '5px', cursor: 'pointer'}} name="" id="" onChange={(e) => {
                     setowner(e.target.value)
                   }}>
                     <option value=''>Select Owner</option>
@@ -117,8 +110,18 @@ const UserStories = () => {
                     ))}
                   </select>
                 </div>
-                <div onClick={addUserStory} style={{ alignSelf: 'flex-end', background: 'rgb(114, 114, 219)', borderRadius: '50%', cursor: 'pointer', width: '30px', marginTop: '10px', color: 'white', textAlign: 'center',  padding: '5px', display: (userStoryName !== '' && project._id !== undefined && owner !== '')?'block':'none'}}>
-                  <i className='fas fa-plus'></i>
+                <div style={{display: 'flex', justifyContent: 'flex-end', gap: '10px', margin: '5px'}}>
+                  <div>
+                    <button style={{ padding: '5px' }} onClick={() => {
+                      setUsereStoryName('')
+                      setdescription('')
+                      setowner('')
+                      dispatch(setcreateWorkItem(false))
+                    }}>Close</button>
+                  </div>
+                  <div style={{ display: (userStoryName !== '' && project._id !== undefined && owner !== '') ? 'block' : 'none' }}>
+                    <button style={{ padding: '5px', width: '50px' }} onClick={addUserStory}>Add</button>
+                  </div>
                 </div>
            </div>}
           </div>

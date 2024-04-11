@@ -3,95 +3,58 @@
 }
 
 body[data-theme="dark"] {
-  --body-background: #17171e;
-  --nabar-text: #fff;
-  --text-total-color: #fff;
-  --button--color: #fff;
-  --navbar-profile-hover: #2172e2;
-  /* --nav-head-bg: #212130; */
-    --nav-head-selected-icons-border: #a7a7ae;
-  --nav-head-icons-border: #4e54c7;
-
-  --nav-head-bg: #032036dd;
-  --nav-head-icons: #fff;
-  --landingPage-working-container-bg: #212130;
-  --chatcontainer-bg: #212130;
-  --user-details-container-bg: #212130;
-  --menubar-bg: #212130;
-  --menubar-txt: #fff;
-  --menubar-hover-txt: #6a73fa;
-  --users-bg: #212130;
-  --newchat-button: #48abec;
-  --searchmenu-bg: #212130;
-  --input-box-bg: #212130;
-  --historical-selected-chat: #5e7585;
-  --messageNavbar-bg: #021521;
-  --tabPanel-text-color: #fff;
-  --landingpage-text-color: #fff;
-  --menubar-hover-color: #17171e;
-  --border-colors: 1px solid rgba(249, 238, 238, 0.155);
-  --userCard-boxshadow: #23232e;
-  --messageNavbar-text: #fff;
-  --singleUserCard-bg: #1c1b1b;
-  --user-filter-background: rgba(130, 124, 124, 0.297);
-    --user-filter-box-background: rgb(40, 39, 39);
-  --text: #040316;
-    --button: #4e54c7;
-
-
+  --nav-head-bg: #010409;
+  --nav-head-icons: #c9d0d7;
+  --body-color: #010409;
+  --navbar-profile-hover: #f6f8fa;
+  --navbar-header-boxShasow: rgba(203, 197, 197, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  --project-selector-bg: #0d1117;
+  --project-selector-bg-hover: #31363e;
+  --user-details-container-bg: #161b22;
+  --user-filter-background: #0d1117;
+  --text-total-color: #e6edf3;
+  --project-project-selector-bg: #0d1117;
+  --user-filter-users-background: #0d1117;
+  --singleUserCard-bg: #161b22;
+  --total-button-bg: #23863797;
+  --button-hover: #238636;
+  --total-button--color: #fff;
+  --total-button-disabled-bg: #23863797;
+  --status-header-bg: #161b22;
+  --addingCard-bg: #161b22;
 }
 
 body[data-theme="light"] {
-  /* LATEST THEME BASED COLORS */
-    --button--color: #fff;
-
-  --text: #040316;
-  --background: #fbfbfe;
-  --primary: #4e54c7;
-  --secondary: #4449ad;
-  --button: #4e54c7;
-  --button-hover: #4449ad;
-  --tab-hover: #bec0e48a;
-  --primary-light: #4e54c718;
-  --user-filter-background: rgba(130, 124, 124, 0.297);
-      --user-filter-box-background: rgb(249, 245, 245);
---singleUserCard-bg: #fff;
---userstories-header: #fff;
-
-  --white-text: #fff;
-  --light-transparent: #4e54c748;
-
   /* Nav bar */
-  --nav-head-bg: #ffffffdd;
-  --nav-head-icons: #4e54c7;
-  --nav-head-icons-border: #dddbff;
-  --nav-head-selected-icons-border: #4e54c7;
-  --nav-head-icons-hover: #4449ad;
-  --navbar-profile-hover: #eaf1fb;
+  --status-header-bg: #e7ebef;
+    --addingCard-bg: #e7ebef;
 
-  --body-background: #dbdbdd;
-  --text-total-color: #48484a;
-  --landingPage-working-container-bg: #f1f1f1;
-  --user-details-container-bg: #e2e5e8;
-  --menubar-bg: #fbfbfe;
-  --menubar-txt: #212130;
-  --menubar-hover-txt: #6a73fa;
-  --chatcontainer-bg: #fff;
-  --searchmenu-bg: #fff;
-  --users-bg: #fff;
-  --input-box-bg: #fff;
-  --historical-selected-chat: #d1eeff;
-  --landingpage-text-color: #000000;
-  --menubar-hover-color: #f4f4f6;
-  --messageNavbar-bg: #fff;
-  --messageNavbar-border: #cccecf;
-  --border-colors: 1px solid #cccecf;
-  --userCard-boxshadow: #ccc;
-  --messageNavbar-text: #000;
+  --total-button-disabled-bg: #23863797;
+  --total-button-bg: #23863797;
+  --button-hover: #238636;
+  --singleUserCard-bg: #e7ebef;
+  --total-button--color: #fff;
+  --text-total-color: #2c2d2d;
+  --user-filter-background: #e7ebef;
+  --user-filter-users-background: #fff;
+
+  --project-selector-bg-hover: #eceef0;
+  /* box-shadow: var(--shadow-floating-small, var(--color-overlay-shadow, 0 1px 3px rgba(31, 35, 40, 0.12), 0 8px 24px rgba(66, 74, 83, 0.12))); */
+  --project-selector-bg: #e7ebef;
+  --user-details-container-bg: #ffffff;
+  --project-project-selector-bg: #fff;
+
+  --nav-head-bg: #f6f8fa;
+  --nav-head-icons: #57595c;
+  --body-color: #f6f8fa;
+  --navbar-profile-hover: #010409;
+  --navbar-header-boxShasow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 body {
-  background: var(--body-background);
+  background: var(--body-color);
   color: var(--text-total-color) !important;
 }
 i {
@@ -159,7 +122,7 @@ label {
   margin-bottom: 10px;
 }
 
-input{
+input {
   width: 330px;
   outline: 0;
   padding: 15px;
@@ -215,19 +178,19 @@ input.invalid {
 }
 
 button:disabled {
-  background-color: var(--button) !important;
+  background-color: var(--total-button-disabled-bg) !important;
   cursor: not-allowed;
 }
 
 button {
   width: auto !important;
   padding: 15px;
-  background-color: var(--button);
+  background-color: var(--total-button-bg);
   font-weight: 600;
   transition: background-color 0.3s ease;
-  color: var(--button--color);
+  color: var(--total-button--color);
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
 }
 

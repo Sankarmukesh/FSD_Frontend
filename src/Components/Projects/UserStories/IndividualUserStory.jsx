@@ -55,7 +55,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                 </div>
                 <div onClick={() => {
                     navigate(`/userStory/${projectId}/${au._id}/edit`)
-                }} style={{ display: 'flex', gap: '5px', alignItems: 'center', fontSize: '14px' }} className='textUnderLinehover'>
+                }} style={{ display: 'flex', gap: '5px', alignItems: 'center', fontSize: '10px' }} className='textUnderLinehover'>
                    <div className='' style={{borderRadius: '50%', height: '10px', width: '10px' ,background: taskStatuses.filter(f=>f.status==au.status)[0]?.color}}></div> <div>{au.status} </div>
                 </div>
                 <div onClick={() => {
@@ -67,7 +67,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                                 borderRadius: "50%",
                                 cursor: "pointer",
                                 maxWidth: "100%",
-                                height: '25px', width: '25px', marginLeft: '0',
+                                height: '25px', width: '25px', margin: '5px 2px 5px -2px',
                                 display: 'block'
                             }}
                             src={
@@ -77,7 +77,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                         /> : <NameGenerator userName={au.owner.userName} sizes={{ height: '15px', width: '15px', fontSize: '8px' }} />}
 
                     </div>
-                    <div>{au.owner.userName}</div>
+                    <div style={{ fontSize: '10px' }}>{au.owner.userName}</div>
                 </div>
                 
               </div>

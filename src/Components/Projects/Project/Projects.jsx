@@ -90,7 +90,7 @@ const Projects = () => {
         <div id='projectBox' onClick={(e) => {
           document.getElementsByClassName('projectDetails')[0].classList.add('showprojectDetails');
         }}>
-            <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}><AccountTreeIcon /><span style={{fontSize: '20px', fontWeight: '400'}}>{selectedProject?.name}</span> </div><div><i class="fas fa-caret-down"></i></div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><AccountTreeIcon /><span style={{ fontSize: '20px', fontWeight: '400', whiteSpace: 'nowrap', width: '80px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{selectedProject?.name}</span> </div><div><i class="fas fa-caret-down"></i></div>
         </div>
           <div className='projectDetails' style={{ display: 'none', zIndex: '1000' }} ref={projectDetailsRef}>
             {allProjects.map(d => (
@@ -99,7 +99,7 @@ const Projects = () => {
                 setSelectedProject(d);
                 document.getElementsByClassName('projectDetails')[0].classList.remove('showprojectDetails');
               } }>
-                {d.name}
+                <div style={{ whiteSpace: 'nowrap', width: '80px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{d.name}</div>
               </div>
                 <>
                   {role == 'Admin' && <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
