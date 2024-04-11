@@ -110,6 +110,8 @@ const App = () => {
           <Route path="/login" Component={LoginAuth(Login)} />
           <Route path="/forgotpassword" Component={LoginAuth(ForgotPassword)} />
           <Route path="*" element={<NoMatch />} />
+          <Route path="/" Component={AuthHoc(Home)} />
+
           <Route path="/home" Component={AuthHoc(Home)} />
           <Route path="/profiles" Component={AdminDeciderHoc(UserProfiles)} />
           <Route path="/userStory/:projectId/:userStoryId/edit" Component={AuthHoc(EditUserStory)} />

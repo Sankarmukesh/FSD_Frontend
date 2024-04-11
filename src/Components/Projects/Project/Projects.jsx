@@ -129,7 +129,7 @@ const Projects = () => {
           setAddPopupopen(true)
         }}>Add Project</button>
         }
-        {Object.keys(selectedProject).length > 0 && <button style={{ padding: '10px', whiteSpace: 'nowrap' }} onClick={() => {
+        {(Object.keys(selectedProject).length > 0 && role!=='individual') && <button style={{ padding: '10px', whiteSpace: 'nowrap' }} onClick={() => {
           dispatch(setcreateWorkItem(true))
         }}>Add Work Item</button>
         }
