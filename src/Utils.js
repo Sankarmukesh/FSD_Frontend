@@ -12,7 +12,7 @@ export const taskStatuses = [
     { color: '#FFD700', status: 'Ready For Retest', left: '850px' }, // Gold
     { color: '#32CD32', status: 'Resolved', left: '1050px' }, // Lime Green
     { color: '#808080', status: 'Deferred', left: '1250px' }, // Gray
-    { color: '#A9A9A9', status: 'Closed', left: '1350px' } // Dark Gray
+    { color: '#A9A9A9', status: 'Closed', left: '1300px' } // Dark Gray
 ];
 
 
