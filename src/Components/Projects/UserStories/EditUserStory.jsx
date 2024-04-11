@@ -293,7 +293,7 @@ const EditUserStory = ({ }) => {
                                   </div>
                                   <div>
                                       <div>{ts?.owner?.userName} (Owner)</div>
-                                      <div style={{ display: 'flex', gap: '25px' }}>{ts?.name}
+                                      <div style={{ display: 'flex', gap: '25px' }}><span style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{ts?.name}</span>
                                           <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                                               <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == ts?.status)[0].color }}></div> <div>{ts?.status}</div>
 
