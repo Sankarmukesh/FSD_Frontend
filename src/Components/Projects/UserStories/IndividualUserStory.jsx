@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import NameGenerator from '../../Common/NameGenerator';
 
 const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories }) => {
+    const { email, role } = useSelector((store) => store.auth.loginDetails);
 
     const navigate=  useNavigate()
     const dispatch = useDispatch()
@@ -41,7 +42,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                     <div onClick={() => {
                         navigate(`/userStory/${projectId}/${au._id}/edit`)
                     }}>Edit</div>
-                    <div onClick={deleteUserStory}>Delete</div>
+                    {role !== 'individual' && <div onClick={deleteUserStory}>Delete</div>}
                 </div>
                 <div onClick={() => {
                     navigate(`/userStory/${projectId}/${au._id}/edit`)

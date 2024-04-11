@@ -10,6 +10,7 @@ import NameGenerator from '../../Common/NameGenerator';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
 const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, allUserStories }) => {
+    const { email, role } = useSelector((store) => store.auth.loginDetails);
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -42,7 +43,7 @@ const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, al
                     <div onClick={() => {
                         navigate(`/task/${projectId}/${userStory._id}/${tasks._id}/edit`)
                     }}>Edit</div>
-                    <div onClick={deleteTasks}>Delete</div>
+                    {role !== 'individual' && <div onClick={deleteTasks}>Delete</div>}
                 </div>
                 <div onClick={() => {
                     navigate(`/task/${projectId}/${userStory._id}/${tasks._id}/edit`)
