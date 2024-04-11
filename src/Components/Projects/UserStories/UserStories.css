@@ -70,7 +70,7 @@
     justify-content: flex-start;
     padding: 15px;
     width: 200px;
-        background: var(--userstories-header);
+        background: var(--addingCard-bg);
         /* border-left: 3px solid orange !important; */
         border-radius: 10px;
             /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
@@ -84,11 +84,13 @@
     right: 15px;
     width: 150px;
     padding: 5px;
-    background:  white;
-    color: #6c6b6b;
-    left: 100%;
+    background:  var(--addingCard-bg);
+    /* color: #6c6b6b; */
+    border: 1px solid gray;
+    left: 101%;
     top: 35px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+       
         z-index: 999;
 
 }
@@ -97,7 +99,8 @@
     cursor: pointer;
 }
 .userStoryMenucard div:hover{
-             background: rgb(186, 183, 183);
+             background: var(--project-selector-bg-hover);
+    border-radius: 10px;
 
 }
 
