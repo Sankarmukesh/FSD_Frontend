@@ -185,7 +185,7 @@ const EditTask = ({ }) => {
                                     <div style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} onClick={() => {
                                         document.getElementsByClassName('userStoryEditStatus')[0].classList.add('showuserStoryEditStatus')
                                     }}>
-                                        <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == IndividualTask?.status)[0].color }}></div> <div>{IndividualTask?.status} <i className='fas fa-caret-down'></i></div>
+                                        <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == IndividualTask?.status)[0]?.color }}></div> <div>{IndividualTask?.status} <i className='fas fa-caret-down'></i></div>
                                     </div>
                                     <div className='userStoryEditStatus' style={{ display: 'none', cursor: 'pointer' }}
                                         onMouseLeave={() => {

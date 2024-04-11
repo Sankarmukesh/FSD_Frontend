@@ -185,7 +185,7 @@ const EditUserStory = ({ }) => {
                                   <div style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} onClick={() => {
                                       document.getElementsByClassName('userStoryEditStatus')[0].classList.add('showuserStoryEditStatus')
                                   }}>
-                                      <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == userStory?.status)[0].color }}></div> <div>{userStory?.status} <i className='fas fa-caret-down'></i></div>
+                                      <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == userStory?.status)[0]?.color }}></div> <div>{userStory?.status} <i className='fas fa-caret-down'></i></div>
                                   </div>
                                   <div className='userStoryEditStatus' style={{ display: 'none', cursor: 'pointer' }}
                                       onMouseLeave={() => {
@@ -295,7 +295,7 @@ const EditUserStory = ({ }) => {
                                       <div>{ts?.owner?.userName} (Owner)</div>
                                       <div style={{ display: 'flex', gap: '25px' }}><span style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{ts?.name}</span>
                                           <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                                              <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == ts?.status)[0].color }}></div> <div>{ts?.status}</div>
+                                              <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == ts?.status)[0]?.color }}></div> <div>{ts?.status}</div>
 
                                           </div>
                                           <div>
