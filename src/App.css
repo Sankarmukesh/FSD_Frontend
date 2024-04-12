@@ -20,9 +20,11 @@ body[data-theme="dark"] {
   --total-button-bg: #23863797;
   --button-hover: #238636;
   --total-button--color: #fff;
-  --total-button-disabled-bg: #23863797;
+  --total-button-disabled-bg: #04aa6d;
   --status-header-bg: #161b22;
   --addingCard-bg: #161b22;
+  --primary: #04aa6d;
+  --signup-bg:#282a35;
 }
 
 body[data-theme="light"] {
@@ -30,7 +32,7 @@ body[data-theme="light"] {
   --status-header-bg: #e7ebef;
     --addingCard-bg: #e7ebef;
 
-  --total-button-disabled-bg: #23863797;
+  --total-button-disabled-bg: #04aa6d;
   --total-button-bg: #23863797;
   --button-hover: #238636;
   --singleUserCard-bg: #e7ebef;
@@ -51,6 +53,8 @@ body[data-theme="light"] {
   --navbar-profile-hover: #010409;
   --navbar-header-boxShasow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+      --primary: #04aa6d;
+       --signup-bg:#282a35;
 }
 
 body {

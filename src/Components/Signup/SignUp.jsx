@@ -198,7 +198,7 @@ const SignUp = () => {
                     onChange={handleChanges}
                     placeholder="User Name*"
                   />
-                  <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <input
                       type="email"
                       className={
@@ -212,7 +212,7 @@ const SignUp = () => {
                       placeholder="Email Address*"
                     />
                     {!isEmailOtpSent && isEmailValid && (
-                      <div title= 'Send Otp'>
+                      <div title='Send Otp'>
                         <i class="fas fa-paper-plane"
                           onClick={sendEmailOtp}
                           disabled={sendEmailOtpLoading}></i>
@@ -228,7 +228,7 @@ const SignUp = () => {
                       className="successIcons"
                     />
                   )}
-                  
+
                   {isEmailOtpSent && emailVerified !== true && (
                     <>
                       <input
@@ -293,16 +293,16 @@ const SignUp = () => {
                     onChange={handleChanges}
                     placeholder="Create Password*"
                   />
-                  <div className="passwordHint" style={{display: 'none'}}>
+                  <div className="passwordHint" style={{ display: 'none' }}>
                     <ul>
-                      <li className={password?.length>=8 ? 'success' : 'failure'}>Password should be atleast 8 character length</li>
+                      <li className={password?.length >= 8 ? 'success' : 'failure'}>Password should be atleast 8 character length</li>
                       <li className={/.*[A-Z].*/.test(password) ? 'success' : 'failure'}>Atleast one capital letter</li>
                       <li className={/.*[a-z].*/.test(password) && password ? 'success' : 'failure'}>Atleast one small letter</li>
                       <li className={/.*[!@#$%^&*()_+].*/.test(password) ? 'success' : 'failure'}>Atleast one special character (!@#$%^&*()_+)</li>
                       <li className={/.*[0-9].*/.test(password) ? 'success' : 'failure'}>Atleast one Number</li>
                     </ul>
                   </div>
-                    
+
                   <button
                     type="submit"
                     className="full-width-button"
@@ -344,7 +344,7 @@ const SignUp = () => {
               <div class="signup-header">
                 <div>
                   <hr />
-                  <p>OR</p>
+                  <p>or</p>
                   <hr />
                 </div>
               </div>
@@ -355,6 +355,19 @@ const SignUp = () => {
                 <GoogleAuth />
               </div>
             </div>
+          </div>
+        </div>
+        <div className="signup-left-container">
+          <div className="signup-left-content"><h1>Become a Task Manager</h1>
+            <p>Free to use, easy to track</p>
+            <div className="checks"><div><span class="tick"><i class="fas fa-check"></i></span> Create a Project</div>
+              <div><span class="tick"><i class="fas fa-check"></i></span> Add tasks to projects</div>
+              <div><span class="tick"><i class="fas fa-check"></i></span> Assign tasks to team members</div>
+              <div><span class="tick"><i class="fas fa-check"></i></span> Set project goals and milestones</div>
+              <div><span class="tick"><i class="fas fa-check"></i></span> Track your progress</div>
+              <div><span class="tick"><i class="fas fa-check"></i></span> Monitor task status and completion</div></div></div>
+          <div className="signup-image-container">
+            <img src="signup.png" alt="error" />
           </div>
         </div>
       </main>
