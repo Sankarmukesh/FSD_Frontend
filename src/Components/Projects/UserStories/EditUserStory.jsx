@@ -19,6 +19,7 @@ const EditUserStory = ({ }) => {
         (store) => store.auth.loginDetails
     );
     const [newComment, setNewComment] = useState('')
+    const [isLoading, setIsLoading] = useState(false);
     const [users, setUsers] = useState([])
     useEffect(() => {
         ApiServices.getAllUsers({ type: '' }).then(res => {
@@ -96,6 +97,7 @@ const EditUserStory = ({ }) => {
 
 
     const updateUserStory = async () => {
+        setIsLoading(true);
         await ApiServices.updateUserStory({ userStoryid: userStoryId, owner: userStory?.owner, name: userStory?.name, description: userStory?.description, updatedBy: user_id, status: userStory?.status }).then(res => {
             dispatch(
                 setToast({
@@ -105,7 +107,9 @@ const EditUserStory = ({ }) => {
                 })
             );
                     navigate('/home')
-
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 2000);
         }).catch(err => {
             dispatch(
                 setToast({
@@ -125,8 +129,8 @@ const EditUserStory = ({ }) => {
           
       >
           
-          <div>
-              <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'fixed', right: '10px', top: '10px', background: 'lightgray', borderRadius: '50%', width: '35px', height: '35px', fontSize: '14px', alignItems: 'center' }}>
+          <div style={{ background: 'var(--body-color)', color: 'var(--text-total-color)'}}>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'fixed', right: '10px', top: '3px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)', borderRadius: '50%', width: '35px', height: '35px', fontSize: '14px', alignItems: 'center' }}>
                   <CloseIcon style={{ cursor: 'pointer', fontSize: '25px', transform: 'translateX(-3px)' }} onClick={handleClose} />
               </div>
               <div style={{ padding: '10px', borderLeft: `6px solid ${taskStatuses.filter(f => f.status == userStory?.status)[0]?.color}` }}>
@@ -138,8 +142,8 @@ const EditUserStory = ({ }) => {
                               </div>
 
                           </div>
-                            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                                  <input type='text' placeholder='Enter name' style={{fontSize:'16px', width: '100%'}} value={userStory?.name} onChange={(e) => { setUserStory((prev) => ({ ...prev, name: e.target.value })) }}></input>
+                            <div style={{ display: 'flex', gap: '10px', alignItems: 'center'}}>
+                              <input type='text' placeholder='Enter name' style={{ fontSize: '16px', width: '100%', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} value={userStory?.name} onChange={(e) => { setUserStory((prev) => ({ ...prev, name: e.target.value })) }}></input>
                           </div>
                          
                          
@@ -218,7 +222,7 @@ const EditUserStory = ({ }) => {
                           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '10px', padding: '10px' }}>
                               <label>Description</label>
                               <textarea
-                                  style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '50%', height: '150px', padding: '10px' }} value={userStory?.description} onChange={(e) => { setUserStory((prev) => ({ ...prev, description: e.target.value })) }}
+                                  style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '50%', height: '150px', padding: '10px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} value={userStory?.description} onChange={(e) => { setUserStory((prev) => ({ ...prev, description: e.target.value })) }}
                                   id=""
                                   cols="2"
                                   rows="12"
@@ -228,7 +232,20 @@ const EditUserStory = ({ }) => {
                           </div>
                       </div>
                       <div style={{ padding: '10px' }}>
-                          <button disabled={userStory?.name == '' || userStory?.description == ''} onClick={updateUserStory}>Update {window.location.pathname.includes('userStory') ? 'User Story' : 'Task'}</button>
+                          <button
+                              disabled={userStory?.name === '' || userStory?.description === '' || isLoading}
+                              onClick={updateUserStory}
+                              style={{ whiteSpace: 'nowrap', position: 'relative' }}
+                          >
+                              {isLoading ? (
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                                      <div className="button-loader"></div>
+                                      <div><span style={{ marginLeft: '10px' }}>Updating...</span></div>
+                                  </div>
+                              ) : (
+                                  <>Update {window.location.pathname.includes('userStory') ? 'User Story' : 'Task'}</>
+                              )}
+                          </button>
                       </div>
 
                       <div style={{ padding: '10px' }}>
@@ -253,7 +270,7 @@ const EditUserStory = ({ }) => {
                                   </div>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>
                                       <textarea
-                                          style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
+                                          style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
                                           id=""
                                           cols="10"
                                           rows="2"

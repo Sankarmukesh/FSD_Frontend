@@ -16,6 +16,12 @@
   width: 10px; /* Width of the scrollbar */
 }
 
+.css-m9glnp-MuiPaper-root-MuiDialog-paper {
+
+    background: var(--body-color) !important;
+  
+}
+
 /* Handle */
 .userStoriesHeaderContainer::-webkit-scrollbar-thumb {
   background: #888; /* Color of the scrollbar handle */

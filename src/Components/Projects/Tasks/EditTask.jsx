@@ -32,7 +32,7 @@ const EditTask = ({ }) => {
             }))
         })
     }, [])
-
+    const [isLoading, setIsLoading] = useState(false);
     const [IndividualTask, setIndividualTask] = useState(null)
     const { projectId, userStoryId, taskId } = useParams()
     const navigate = useNavigate()
@@ -96,6 +96,7 @@ const EditTask = ({ }) => {
 
 
     const updateTasks = async () => {
+        setIsLoading(true);
         await ApiServices.updateTasks({ taskId: taskId, owner: IndividualTask?.owner, name: IndividualTask?.name, description: IndividualTask?.description, updatedBy: user_id, status: IndividualTask?.status, due: IndividualTask?.due }).then(res => {
             dispatch(
                 setToast({
@@ -105,7 +106,9 @@ const EditTask = ({ }) => {
                 })
             );
             navigate('/home')
-
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 2000);
         }).catch(err => {
             dispatch(
                 setToast({
@@ -125,8 +128,8 @@ const EditTask = ({ }) => {
 
         >
 
-            <div>
-                <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'fixed', right: '10px', top: '10px', background: 'lightgray', borderRadius: '50%', width: '35px', height: '35px', fontSize: '14px', alignItems: 'center' }}>
+            <div style={{ background: 'var(--body-color)', color: 'var(--text-total-color)' }}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'fixed', right: '10px', top: '3px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)', borderRadius: '50%', width: '35px', height: '35px', fontSize: '14px', alignItems: 'center' }}>
                     <CloseIcon style={{ cursor: 'pointer', fontSize: '25px', transform: 'translateX(-3px)' }} onClick={handleClose} />
                 </div>
                 <div style={{ padding: '10px',  borderLeft: `6px solid ${taskStatuses.filter(f => f.status == IndividualTask?.status)[0]?.color}`}}>
@@ -139,7 +142,7 @@ const EditTask = ({ }) => {
 
                             </div>
                             <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                                <input type='text' placeholder='Enter name' style={{ fontSize: '16px', width: '100%' }} value={IndividualTask?.name} onChange={(e) => { setIndividualTask((prev) => ({ ...prev, name: e.target.value })) }}></input>
+                                <input type='text' placeholder='Enter name' style={{ fontSize: '16px', width: '100%', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} value={IndividualTask?.name} onChange={(e) => { setIndividualTask((prev) => ({ ...prev, name: e.target.value })) }}></input>
                             </div>
 
 
@@ -212,7 +215,7 @@ const EditTask = ({ }) => {
                                 <span>
                                     Due date
                                 </span>
-                                <input min={new Date().toISOString().split('T')[0]} style={{width: '299px'}} type="date" name="" id="due" value={IndividualTask?.due} onChange={(e) => setIndividualTask((prev) => ({ ...prev, due: e.target.value }))} />
+                                <input min={new Date().toISOString().split('T')[0]} style={{ width: '299px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} type="date" name="" id="due" value={IndividualTask?.due} onChange={(e) => setIndividualTask((prev) => ({ ...prev, due: e.target.value }))} />
                             </div>
 
                         </div>
@@ -224,7 +227,7 @@ const EditTask = ({ }) => {
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '10px', padding: '10px' }}>
                                 <label>Description</label>
                                 <textarea
-                                    style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '50%', height: '150px', padding: '10px' }} value={IndividualTask?.description} onChange={(e) => { setIndividualTask((prev) => ({ ...prev, description: e.target.value })) }}
+                                    style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '50%', height: '150px', padding: '10px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} value={IndividualTask?.description} onChange={(e) => { setIndividualTask((prev) => ({ ...prev, description: e.target.value })) }}
                                     id=""
                                     cols="2"
                                     rows="12"
@@ -234,7 +237,20 @@ const EditTask = ({ }) => {
                             </div>
                         </div>
                         <div style={{ padding: '10px' }}>
-                            <button disabled={IndividualTask?.name == '' || IndividualTask?.description == ''} onClick={updateTasks}>Update {window.location.pathname.includes('userStory') ? 'User Story' : 'Task'}</button>
+                            <button
+                                disabled={IndividualTask?.name === '' || IndividualTask?.description === '' || isLoading}
+                                onClick={updateTasks}
+                                style={{ whiteSpace: 'nowrap', position: 'relative' }}
+                            >
+                                {isLoading ? (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                                        <div className="button-loader"></div>
+                                        <div><span style={{ marginLeft: '10px' }}>Updating...</span></div>
+                                    </div>
+                                ) : (
+                                    <>Update {window.location.pathname.includes('userStory') ? 'User Story' : 'Task'}</>
+                                )}
+                            </button>
                         </div>
 
                         <div style={{ padding: '10px' }}>
@@ -259,7 +275,7 @@ const EditTask = ({ }) => {
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>
                                         <textarea
-                                            style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
+                                            style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
                                             id=""
                                             cols="10"
                                             rows="2"

@@ -124,10 +124,10 @@ const ProfileImageUpdate = ({ open, setOpen}) => {
           <div>
             {(image !== undefined && image !== '') ? <img
               style={{
-                borderRadius: "50%",
+                borderRadius: "10%",
                 cursor: "pointer",
                 maxWidth: "100%",
-                height: '100px', width: '100px',
+                height: '250px', width: '250px',
                 display: 'block'
               }}
               src={image}

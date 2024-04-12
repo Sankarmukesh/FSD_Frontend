@@ -136,12 +136,14 @@ const Navbar = () => {
         }}
       >
         <img
-          id="logoImage" style={{height: '50px'}}
-          src={
-            localStorage.getItem("theme") == "light"
-              ? process.env.REACT_APP_MAIL_LOGO
-              : process.env.REACT_APP_MAIL_LOGO
-          }
+          id="logoImage" style={{ height: '50px', padding: '10px' }}
+          src="logo.png"
+          // src={
+            
+          //   localStorage.getItem("theme") == "light"
+          //     ? process.env.REACT_APP_MAIL_LOGO
+          //     : process.env.REACT_APP_MAIL_LOGO
+          // }
           alt="logo"
         />
       </div>
@@ -179,10 +181,10 @@ const Navbar = () => {
             }`;
 
             // Switching the logo based on the theme
-            const logoImg = document.getElementById("logoImage");
-            logoImg.src =
-              newTheme === "light" ? process.env.REACT_APP_MAIL_LOGO : process.env.REACT_APP_MAIL_LOGO;
-            logoImg.alt = `${mode} Logo`;
+            // const logoImg = document.getElementById("logoImage");
+            // logoImg.src =
+            //   newTheme === "light" ? process.env.REACT_APP_MAIL_LOGO : process.env.REACT_APP_MAIL_LOGO;
+            // logoImg.alt = `${mode} Logo`;
 
             e.currentTarget.title = `Switch to ${mode} Mode`;
           }}
