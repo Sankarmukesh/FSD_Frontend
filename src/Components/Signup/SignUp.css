@@ -368,6 +368,7 @@ signup-page .signup-container form .invalid {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  height: 100%;
 }
 .signup-left-container {
   color: white;
