@@ -48,10 +48,11 @@ const Projects = () => {
     })
   }, [])
   useEffect(() => {
-    if (localStorage.getItem('project') && allProjects.length>0) {
+    if (localStorage.getItem('project') && allProjects.length > 0 && allProjects?.filter(f => f._id == JSON.parse(localStorage.getItem('project'))._id).length>0) {
       setSelectedProject(JSON.parse(localStorage.getItem('project')))
     } else {
       if (allProjects.length > 0) {
+        localStorage.setItem('project', JSON.stringify(allProjects[0]))
         setSelectedProject(allProjects[0])
       }
     }
