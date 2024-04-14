@@ -148,7 +148,7 @@ const EditTask = ({ }) => {
 
                             <div style={{ position: 'relative' }}>
                                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer', }} onClick={() => {
-                                    document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.add('showuserStoryEditAllUserBox')
+                                    document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.toggle('showuserStoryEditAllUserBox')
                                 }}>
                                     <div>
                                         {(IndividualTask?.owner?.image !== undefined && IndividualTask?.owner?.image!=='' && IndividualTask?.owner?.image.url !== "") ? <img
