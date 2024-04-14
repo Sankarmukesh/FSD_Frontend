@@ -145,7 +145,7 @@ const Login = () => {
                       gap: "3px",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: '10px'
+                      width: '10px', background: 'var(--primary)'
                       // borderRadius: "10px",
                     }}
                   >

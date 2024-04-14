@@ -282,7 +282,7 @@ const SignUp = () => {
                       )}
                     </>
                   )}
-                  <input onMouseOver={(e) => e.target.nextElementSibling.style.display = 'block'} onMouseLeave={(e) => e.target.nextElementSibling.style.display = 'none'}
+                  <input onKeyDown={(e) => e.target.nextElementSibling.style.display = 'block'} onBlur={(e) => e.target.nextElementSibling.style.display = 'none'}
                     type="password"
                     className={
                       isPasswordValid !== null &&

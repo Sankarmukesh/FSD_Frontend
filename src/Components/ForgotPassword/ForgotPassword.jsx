@@ -183,7 +183,7 @@ const ResetPassword = () => {
                       onChange={handleChanges}
                     />
                     {isEmailValid && !otpVisible && (
-                      <button
+                    <button style={{ background: 'var(--primary)' }}
                         type="button"
                         className="full-width-button"
                         onClick={handleGetOtp}
@@ -201,7 +201,7 @@ const ResetPassword = () => {
                           onChange={handleChanges}
                         />
                         {otp !== null && otp?.length === 6 && (
-                          <button
+                        <button style={{ background: 'var(--primary)' }}
                             type="button"
                             className="full-width-button"
                             onClick={verifyOtp}
@@ -252,7 +252,7 @@ const ResetPassword = () => {
                   </>
                 )}
                 
-                <button
+                <button style={{ background: 'var(--primary)' }}
                   className="full-width-button"
                   type="submit"
                   disabled={
