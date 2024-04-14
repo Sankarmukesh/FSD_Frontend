@@ -117,6 +117,7 @@ const EditTask = ({ }) => {
                     visible: "yes",
                 })
             );
+            setIsLoading(false);
         })
     }
     return (

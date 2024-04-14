@@ -118,6 +118,7 @@ const EditUserStory = ({ }) => {
                     visible: "yes",
                 })
             );
+            setIsLoading(false);
         })
     }
   return (
