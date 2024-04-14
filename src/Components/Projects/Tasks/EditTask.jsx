@@ -151,7 +151,7 @@ const EditTask = ({ }) => {
                                     document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.add('showuserStoryEditAllUserBox')
                                 }}>
                                     <div>
-                                        {(IndividualTask?.owner?.image !== undefined && IndividualTask?.owner?.image.url !== "") ? <img
+                                        {(IndividualTask?.owner?.image !== undefined && IndividualTask?.owner?.image!=='' && IndividualTask?.owner?.image.url !== "") ? <img
                                             style={{
                                                 borderRadius: "50%",
                                                 cursor: "pointer",
