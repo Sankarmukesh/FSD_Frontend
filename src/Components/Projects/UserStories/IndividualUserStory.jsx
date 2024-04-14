@@ -63,7 +63,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                     navigate(`/userStory/${projectId}/${au._id}/edit`)
                 }} className='textUnderLinehover' style={{ fontSize: '14px', display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <div>
-                        {(au.owner.image !== undefined && au.owner.image!="" && au.owner.image.url !== "") ? <img
+                        {(au.owner?.image !== undefined && au.owner?.image!="" && au.owner?.image.url !== "") ? <img
                             style={{
                                 borderRadius: "50%",
                                 cursor: "pointer",
@@ -72,13 +72,13 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                                 display: 'block'
                             }}
                             src={
-                                au.owner.image !== undefined && au.owner.image !== "" ? au.owner.image.url : "/profile.png"
+                                au.owner?.image !== undefined && au.owner?.image !== "" ? au.owner?.image.url : "/profile.png"
                             }
                             alt="Profile"
-                        /> : <NameGenerator userName={au.owner.userName} sizes={{ height: '15px', width: '15px', fontSize: '8px' }} />}
+                        /> : <NameGenerator userName={au.owner?.userName} sizes={{ height: '15px', width: '15px', fontSize: '8px' }} />}
 
                     </div>
-                    <div style={{ fontSize: '10px' }}>{au.owner.userName}</div>
+                    <div style={{ fontSize: '10px' }}>{au.owner?.userName}</div>
                 </div>
                 
               </div>

@@ -10,10 +10,10 @@ const UserCard = ({ d, allRoles }) => {
     const dispatch = useDispatch()
     const updateRole = async () => {
         if (updatedRole !== '') {
-            await ApiServices.changeUserRoles({ id: d._id, role: updatedRole }).then(res => {
+            await ApiServices.changeUserRoles({ id: d?._id, role: updatedRole }).then(res => {
                 d.role = updatedRole
                 dispatch(setToast({
-                    message: "Role Updated for" + d.userName,
+                    message: "Role Updated for" + d?.userName,
                     bgColor: ToastColors.success,
                     visible: "yes",
                 }))
@@ -28,7 +28,7 @@ const UserCard = ({ d, allRoles }) => {
     }
   return (
       <div className='singleUserCard'>
-          {(d.image !== undefined && d.image.url !== '') ? <img
+          {(d?.image !== undefined && d?.image!=='' && d?.image.url !== '') ? <img
               style={{
                   borderRadius: "50%",
                   maxWidth: "100%",
@@ -36,18 +36,18 @@ const UserCard = ({ d, allRoles }) => {
                   display: 'block',
                   marginLeft: '0px'
               }}
-              src={ d.image.url }
+              src={ d?.image.url }
               alt="Profile"
-          /> : <NameGenerator userName={d.userName} sizes={{ height: '80px', width: '80px', fontSize: '26px' }} />}
+          /> : <NameGenerator userName={d?.userName} sizes={{ height: '80px', width: '80px', fontSize: '26px' }} />}
           <div>
-              <div style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }} className='cardEmail'>{d.email}</div>
-              <div className='cardEmail' style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{d.userName}</div>
+              <div style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }} className='cardEmail'>{d?.email}</div>
+              <div className='cardEmail' style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{d?.userName}</div>
               <div className=''>
                   <select name="" id="" onChange={(e) => {
                       setUpdatedRole(e.target.value)
                   }}>
                       {allRoles.map(op => (
-                          <option value={op.role} selected={op.role===d.role}>{op.role}</option>
+                          <option value={op.role} selected={op.role===d?.role}>{op.role}</option>
                       ))}
                   </select>
               </div>

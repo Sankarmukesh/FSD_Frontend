@@ -64,7 +64,7 @@ const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, al
                     navigate(`/task/${projectId}/${userStory._id}/${tasks._id}/edit`)
                 }} className='textUnderLinehover' style={{ fontSize: '14px', display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <div>
-                        {(tasks.owner.image !== undefined && tasks.owner.image.url !== "") ? <img
+                        {(tasks.owner?.image !== undefined && tasks.owner?.image !== "" && tasks.owner?.image.url !== "") ? <img
                             style={{
                                 borderRadius: "50%",
                                 cursor: "pointer",
@@ -73,14 +73,14 @@ const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, al
                                 display: 'block'
                             }}
                             src={
-                                tasks.owner.image !== undefined && tasks.owner.image !== "" ? tasks.owner.image.url : "/profile.png"
+                                tasks.owner?.image !== undefined && tasks.owner?.image !== "" ? tasks.owner?.image.url : "/profile.png"
                             }
                             alt="Profile"
-                        /> : <NameGenerator userName={tasks.owner.userName} sizes={{ height: '15px', width: '15px', fontSize: '8px' }} />}
+                        /> : <NameGenerator userName={tasks.owner?.userName} sizes={{ height: '15px', width: '15px', fontSize: '8px' }} />}
 
                     </div>
                     <div>
-                        <div style={{fontSize: '10px'}}>{tasks.owner.userName}</div>
+                        <div style={{fontSize: '10px'}}>{tasks.owner?.userName}</div>
                         <div style={{ fontSize: '10px' }}>Due date- {dateDayStructure(tasks.due)}</div>
                     </div>
                 </div>
