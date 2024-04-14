@@ -224,7 +224,7 @@ const Navbar = () => {
                   borderRadius: "50%",
                   cursor: "pointer",
                   maxWidth: "100%",
-                  height: '100px', width: '100px',
+                  height: '80px', width: '80px',
                   display: 'block'
                 }}
                 src={
