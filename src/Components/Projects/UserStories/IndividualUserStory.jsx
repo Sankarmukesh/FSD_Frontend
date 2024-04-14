@@ -31,7 +31,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
     <div className='userStoryDetails'>
             <div className='userStoryCard' style={{ borderLeft: `3px solid ${taskStatuses.filter(f => f.status == au.status)[0]?.color}`}}>
                 <div style={{position: 'absolute', right: '8px', fontSize: '12px', cursor: 'pointer'}} onClick={(e)=>{
-                    document.getElementById(`userStoryMenucard${au._id}`).classList.add('show')
+                    document.getElementById(`userStoryMenucard${au._id}`).classList.toggle('show')
                 }}>
                     <ListIcon />
                 </div>
@@ -63,7 +63,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
                     navigate(`/userStory/${projectId}/${au._id}/edit`)
                 }} className='textUnderLinehover' style={{ fontSize: '14px', display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <div>
-                        {(au.owner.image !== undefined && au.owner.image.url !== "") ? <img
+                        {(au.owner.image !== undefined && au.owner.image!="" && au.owner.image.url !== "") ? <img
                             style={{
                                 borderRadius: "50%",
                                 cursor: "pointer",

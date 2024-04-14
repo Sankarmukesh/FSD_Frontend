@@ -32,7 +32,7 @@ const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, al
         <div className='userStoryDetails' style={{ marginLeft: taskStatuses.filter(f => f.status == tasks?.status)[0]?.left }}>
             <div className='userStoryCard taskCard' style={{ borderLeft: `3px solid ${taskStatuses.filter(f => f.status == tasks?.status)[0]?.color}`}}>
                 <div style={{ position: 'absolute', right: '8px', fontSize: '12px', cursor: 'pointer' }} onClick={(e) => {
-                    document.getElementById(`userStoryMenucard${tasks._id}`).classList.add('show')
+                    document.getElementById(`userStoryMenucard${tasks._id}`).classList.toggle('show')
                 }}>
                     <ListIcon />
                 </div>

@@ -136,8 +136,8 @@ const Navbar = () => {
         }}
       >
         <img
-          id="logoImage" style={{ height: '190px',width: '200px', marginBottom: '-15px'  }}
-          src="logo.png"
+          id="logoImage" style={{height: '50px',width: '200px', marginBottom: '-15px',  objectFit: 'cover'  }}
+          src="/logo.png"
           // src={
             
           //   localStorage.getItem("theme") == "light"
@@ -248,16 +248,14 @@ const Navbar = () => {
             // setLogoutPopupOpen(true)
             logoutDecider('All')
           }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <button style={{ display: 'flex', alignItems: 'center' }}>
               <i
                 className="fas fa-sign-out-alt"
                 style={{ marginRight: "5px" }}
               ></i>{" "}
-            </div>
-            <div>
-
-              Sign Out
-            </div>
+              Signout
+            </button>
+      
           </div>
         </div>
 

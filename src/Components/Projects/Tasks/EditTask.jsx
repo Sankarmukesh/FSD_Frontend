@@ -183,7 +183,7 @@ const EditTask = ({ }) => {
                                 </div>
                             </div>
 
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '16px', marginTop: '10px', position: 'relative' }}>
+                            <div className='statusHolder' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '16px', marginTop: '10px', position: 'relative', flexWrap: 'wrap' }}>
                                 <div>
                                     <div style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} onClick={() => {
                                         document.getElementsByClassName('userStoryEditStatus')[0].classList.add('showuserStoryEditStatus')
@@ -211,10 +211,10 @@ const EditTask = ({ }) => {
                                
                             </div>
 
-                            <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                                <span>
-                                    Due date
-                                </span>
+                            <div style={{ display: 'flex', gap: '5px', alignItems: 'center', flexWrap: 'wrap' }}>
+                                <b>
+                                    Due date:
+                                </b>
                                 <input min={new Date().toISOString().split('T')[0]} style={{ width: '299px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} type="date" name="" id="due" value={IndividualTask?.due} onChange={(e) => setIndividualTask((prev) => ({ ...prev, due: e.target.value }))} />
                             </div>
 
@@ -222,7 +222,7 @@ const EditTask = ({ }) => {
                     }
                 </div>
                 <div className='detailsContainer'>
-                    <div className='' style={{flex: '1'}}>
+                    <div className='leftDetailsContainer' style={{flex: '1'}}>
                         <div>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '10px', padding: '10px' }}>
                                 <label>Description</label>
@@ -277,7 +277,8 @@ const EditTask = ({ }) => {
                                         <textarea
                                             style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
                                             id=""
-                                            cols="10"
+                                            className='discussionEditUserStory'
+                                            cols="30"
                                             rows="2"
                                             name="message"
                                             placeholder="Description"

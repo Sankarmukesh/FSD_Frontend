@@ -29,6 +29,33 @@
 .projectDetails div:hover {
   /* color: #040316; */
 }
+.teamContainer{
+    color: var(--text-total-color) !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.projC input{
+width: 94% !important;
+}
+.projC select{
+width: 100% !important;
+}
+.projC button{
+padding: 10px !important;
+}
+.teamContainer > div{
+  
+    background: var( --project-team-bg);
+  display: flex;
+  
+    padding: 5px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+}
 
 .projectDetails div {
   padding: 5px 6px;

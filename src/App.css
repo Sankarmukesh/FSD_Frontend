@@ -3,6 +3,7 @@
 }
 
 body[data-theme="dark"] {
+  --project-team-bg: #010409;
   --nav-head-bg: #010409;
   --nav-head-icons: #c9d0d7;
   --body-color: #010409;
@@ -30,6 +31,8 @@ body[data-theme="dark"] {
 
 body[data-theme="light"] {
   /* Nav bar */
+    --project-team-bg: #d0d3d6;
+
   --status-header-bg: #e7ebef;
     --addingCard-bg: #e7ebef;
 

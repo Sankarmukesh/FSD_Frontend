@@ -63,7 +63,7 @@ const App = () => {
     socket.current.emit("addUser", user_id);
     socket.current.on("getUsers", (users) => {
       dispatch(setOnlineUsers(users));
-      console.log(users);
+      // console.log(users);
     });
   }, [email]);
 

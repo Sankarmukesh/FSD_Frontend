@@ -149,10 +149,10 @@ const EditUserStory = ({ }) => {
                          
                           <div style={{position: 'relative' }}>
                               <div style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer', }} onClick={() => {
-                                  document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.add('showuserStoryEditAllUserBox')
+                                  document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.toggle('showuserStoryEditAllUserBox')
                               }}>
                                   <div>
-                                      {(userStory?.owner?.image !== undefined && userStory?.owner?.image.url !== "") ? <img
+                                      {(userStory?.owner?.image !== undefined && userStory?.owner?.image !== '' && userStory?.owner?.image.url !== "") ? <img
                                           style={{
                                               borderRadius: "50%",
                                               cursor: "pointer",
@@ -184,10 +184,10 @@ const EditUserStory = ({ }) => {
                               </div>
                           </div>
 
-                          <div style={{ display: 'flex',justifyContent: 'space-between', alignItems: 'center', fontSize: '16px', marginTop: '10px', position: 'relative' }}>
+                          <div className='statusHolder' style={{ display: 'flex',justifyContent: 'space-between', alignItems: 'center', fontSize: '16px', marginTop: '10px', position: 'relative', flexWrap: 'wrap' }}>
                               <div>
                                   <div style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} onClick={() => {
-                                      document.getElementsByClassName('userStoryEditStatus')[0].classList.add('showuserStoryEditStatus')
+                                      document.getElementsByClassName('userStoryEditStatus')[0].classList.toggle('showuserStoryEditStatus')
                                   }}>
                                       <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == userStory?.status)[0]?.color }}></div> <div>{userStory?.status} <i className='fas fa-caret-down'></i></div>
                                   </div>
@@ -272,7 +272,9 @@ const EditUserStory = ({ }) => {
                                       <textarea
                                           style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px', background: 'var( --user-details-container-bg)', color: 'var(--text-total-color)' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
                                           id=""
-                                          cols="10"
+                                          cols="30"
+                                          className='discussionEditUserStory'
+
                                           rows="2"
                                           name="message"
                                           placeholder="Description"
@@ -293,7 +295,7 @@ const EditUserStory = ({ }) => {
                           {userStory?.taskIds?.map(ts => (
                               <div style={{ display: 'flex', gap: '5px', cursor: 'pointer' }} onClick={() => navigate(`/task/${projectId}/${userStory._id}/${ts._id}/edit`)}>
                                   <div>
-                                      {(ts?.owner?.image !== undefined && ts?.owner?.image.url !== "") ? <img
+                                      {(ts?.owner?.image !== undefined && ts?.owner?.image !== '' && ts?.owner?.image.url !== "") ? <img
                                           style={{
                                               borderRadius: "50%",
                                               cursor: "pointer",
@@ -305,17 +307,17 @@ const EditUserStory = ({ }) => {
                                               ts?.owner?.image !== undefined && ts?.owner?.image !== "" ? ts?.owner?.image.url : "/profile.png"
                                           }
                                           alt="Profile"
-                                      /> : <NameGenerator userName={ts?.owner?.userName} sizes={{ height: '40px', width: '40px', fontSize: '8px' }} />}
+                                      /> : <NameGenerator userName={ts?.owner?.userName} sizes={{ height: '60px', width: '60px', fontSize: '8px' }} />}
 
                                   </div>
                                   <div>
                                       <div>{ts?.owner?.userName} (Owner)</div>
-                                      <div style={{ display: 'flex', gap: '25px' }}><span style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{ts?.name}</span>
-                                          <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                                      <div className='associatedtaskstatus' style={{ display: 'flex', gap: '25px' }}><span style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{ts?.name}</span>
+                                          <div  style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                                               <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == ts?.status)[0]?.color }}></div> <div>{ts?.status}</div>
 
                                           </div>
-                                          <div>
+                                          <div className='associatedUpdateTime'>
                                               {/* Updated by {users?.filter(u => u._id == ts?.lastUpdatedBy)[0]?.userName},  */}
                                               {formatDate(ts?.updatedAt)}
                                           </div> 

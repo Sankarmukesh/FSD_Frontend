@@ -217,16 +217,15 @@ img {
 } */
 
 .userDetails {
-  height: 150px;
+padding: 35px;
+  height: 100px;
   width: 380px;
   background: var(--user-details-container-bg);
   border-radius: 10px;
   position: absolute;
   display: none;
-  padding: 10px;
   top: 70px;
   right: 10px;
-  border: black;
   transition: all ease 0.2s;
   box-shadow: 0 0 10px rgba(108, 107, 107, 0.2);
   z-index: 999 !important;
@@ -570,8 +569,9 @@ img {
     color: rgba(32, 30, 30, 0.955);
   }
   .userDetails {
-    height: 370px;
+    height: 130px;
     width: 335px;
+    padding: 15px;
     top: 65px;
     right: 6px;
   }

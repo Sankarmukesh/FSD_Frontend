@@ -36,7 +36,7 @@ const UserStoryComments = ({ us }) => {
       <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div>
-                  {(us?.commentBy?.image !== undefined && us?.commentBy?.image.url !== "") ? <img
+                  {(us?.commentBy?.image !== undefined && us?.commentBy?.image !== "" && us?.commentBy?.image.url !== "") ? <img
                       style={{
                           borderRadius: "50%",
                           cursor: "pointer",
@@ -55,7 +55,8 @@ const UserStoryComments = ({ us }) => {
                   <textarea disabled={us?.commentBy?._id !== user_id}
                       style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
                       id=""
-                      cols="10"
+                      cols="30"
+                      className='discussionEditUserStory'
                       rows="2"
                       name="message"
                       placeholder="Description"

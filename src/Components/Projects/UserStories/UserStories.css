@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    height: 500px;
+    height: 78.5vh;
 }
 .userStoriesHeader{
     position: sticky;
@@ -142,6 +142,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
       position: absolute;
       background: white;
+      color: #040316;
     /* color: #040316; */
         z-index: 1000;
 
@@ -180,4 +181,27 @@
 
 .rightDetailsContainer{
     flex: 50%;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .detailsContainer {
+        flex-direction: column;
+    }
+    .leftDetailsContainer{
+        width: 350px !important;
+    }
+    .leftDetailsContainer textarea{
+        width: 100% !important;
+    }
+    .discussionEditUserStory{
+         width: 200px !important;
+
+    }
+    .associatedUpdateTime{
+        display: none;
+    }
+    .associatedtaskstatus{
+        gap: 10px !important;
+    }
 }

@@ -35,7 +35,7 @@ const UserStories = () => {
   useEffect(() => {
     if (project._id !== undefined) {
       ApiServices.getUserStoryBasedOnProject({ projectId: project._id }).then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         setallUserStories(res.data)
       }).catch(err => {
         dispatch(setToast({

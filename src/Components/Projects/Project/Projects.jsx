@@ -48,7 +48,7 @@ const Projects = () => {
     })
   }, [])
   useEffect(() => {
-    if (localStorage.getItem('project')) {
+    if (localStorage.getItem('project') && allProjects.length>0) {
       setSelectedProject(JSON.parse(localStorage.getItem('project')))
     } else {
       if (allProjects.length > 0) {
@@ -94,11 +94,11 @@ const Projects = () => {
         </div>
           <div className='projectDetails' style={{ display: 'none', zIndex: '1000' }} ref={projectDetailsRef}>
             {allProjects.map(d => (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}><div onClick={(e) => {
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={(e) => {
                 localStorage.setItem('project', JSON.stringify(d));
                 setSelectedProject(d);
                 document.getElementsByClassName('projectDetails')[0].classList.remove('showprojectDetails');
-              } }>
+              }}><div>
                 <div style={{ whiteSpace: 'nowrap', width: '80px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{d.name}</div>
               </div>
                 <>
