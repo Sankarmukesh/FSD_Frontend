@@ -36,6 +36,10 @@
     flex-wrap: wrap;
     gap: 5px;
 }
+.projC{
+    background: var(--project-project-selector-bg);
+
+}
 .projC input{
 width: 94% !important;
 }
