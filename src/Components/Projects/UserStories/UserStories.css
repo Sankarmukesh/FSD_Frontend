@@ -189,7 +189,7 @@
         flex-direction: column;
     }
     .leftDetailsContainer{
-        width: 350px !important;
+        width: 330px !important;
     }
     .leftDetailsContainer textarea{
         width: 100% !important;
