@@ -136,7 +136,7 @@ const Navbar = () => {
         }}
       >
         <img
-          id="logoImage" style={{ height: '50px', padding: '10px' }}
+          id="logoImage" style={{ height: '190px',width: '200px', marginBottom: '-15px'  }}
           src="logo.png"
           // src={
             
