@@ -36,7 +36,7 @@ const TaskComments = ({ us }) => {
         <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <div>
-                    {(us?.commentBy?.image !== undefined && us?.commentBy?.image.url !== "") ? <img
+                    {(us?.commentBy?.image !== undefined && us?.commentBy?.image !== "" && us?.commentBy?.image.url !== "") ? <img
                         style={{
                             borderRadius: "50%",
                             cursor: "pointer",
