@@ -48,13 +48,13 @@ const Projects = () => {
     })
   }, [])
   useEffect(() => {
-    if (localStorage.getItem('project') && allProjects.length>0) {
-      setSelectedProject(JSON.parse(localStorage.getItem('project')))
-    } else {
+    // if (localStorage.getItem('project') && allProjects.length>0) {
+    //   setSelectedProject(JSON.parse(localStorage.getItem('project')))
+    // } else {
       if (allProjects.length > 0) {
         setSelectedProject(allProjects[0])
       }
-    }
+    // }
   }, [allProjects])
 
   const [addPopupopen, setAddPopupopen] = useState(false)

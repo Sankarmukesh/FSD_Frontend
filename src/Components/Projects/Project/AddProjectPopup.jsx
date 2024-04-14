@@ -85,11 +85,9 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
     }
 
     const updateProject = async () => {
-        console.log(sendingEmail)
-        console.log(deletingEmail)
-        await ApiServices.updateProject({ projectId: selectedProject._id, name: projectName, teamMembers: teamMembers, sendingEmail: sendingEmail }).then(res => {
+        await ApiServices.updateProject({ projectId: selectedProject._id, name: projectName, teamMembers: teamMembers, sendingEmail: sendingEmail, deletingEmail: deletingEmail }).then(res => {
             // console.log(allProjects.map(a => a._id == selectedProject._id ? { ...a, name: projectName } : a));
-            setAllProjects(allProjects.map(a => a._id == selectedProject._id ? { ...a, name: projectName } : a))
+            setAllProjects(allProjects.map(a => a._id == selectedProject._id ? { ...a, name: projectName, teamMembers: teamMembers } : a))
             dispatch(
                 setToast({
                     message: "Project Updated",
@@ -117,7 +115,7 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
 
 
     const addingTeamMembers = (e) => {
-        if (!teamMembers?.find((f) => f._id.toString() == e.target.value)) {
+        if (!teamMembers?.find((f) => f._id.toString() == e.target.value) && e.target.value!=='') {
             setTeamMembers(prev => [...prev, users?.find((f) => f._id.toString() == e.target.value)])
             setSendingEmail(prev => [...prev, users?.find((f) => f._id.toString() == e.target.value)])
             setdeletingEmail(deletingEmail?.filter((f) => f._id.toString() !== e.target.value))
@@ -158,6 +156,7 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
                         <select style={{ padding: '15px', borderRadius: '5px' }} name="" id="" onChange={(e) => {
                             addingTeamMembers(e)
                         }}>
+                            <option value="">Select</option>
                             {users.map((op, i) => (
                                 <option value={op._id} id={i}>{op.userName}</option>
                             ))}
