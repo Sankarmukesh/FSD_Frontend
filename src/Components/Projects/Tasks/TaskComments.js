@@ -53,7 +53,7 @@ const TaskComments = ({ us }) => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>
                     <textarea disabled={us?.commentBy?._id !== user_id}
-                        style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
+                        style={{ resize: "none", outline: 'none', border: '1px solid lightgray', fontSize: '16px', width: '400px', padding: '10px', color: 'var(--text-total-color)' }} value={newComment} onChange={(e) => { setNewComment(e.target.value) }}
                         id=""
                         cols="30"
                         rows="2"
