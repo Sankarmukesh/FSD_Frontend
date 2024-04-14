@@ -151,6 +151,7 @@ const EditUserStory = ({ }) => {
                           <div style={{position: 'relative' }}>
                               <div style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer', }} onClick={() => {
                                   document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.toggle('showuserStoryEditAllUserBox')
+                                  document.getElementsByClassName('userStoryEditStatus')[0].classList.remove('showuserStoryEditStatus')
                               }}>
                                   <div>
                                       {(userStory?.owner?.image !== undefined && userStory?.owner?.image !== '' && userStory?.owner?.image.url !== "") ? <img
@@ -189,6 +190,7 @@ const EditUserStory = ({ }) => {
                               <div>
                                   <div style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} onClick={() => {
                                       document.getElementsByClassName('userStoryEditStatus')[0].classList.toggle('showuserStoryEditStatus')
+                                      document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                                   }}>
                                       <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == userStory?.status)[0]?.color }}></div> <div>{userStory?.status} <i className='fas fa-caret-down'></i></div>
                                   </div>

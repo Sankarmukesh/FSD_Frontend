@@ -150,6 +150,7 @@ const EditTask = ({ }) => {
                             <div style={{ position: 'relative' }}>
                                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer', }} onClick={() => {
                                     document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.toggle('showuserStoryEditAllUserBox')
+                                    document.getElementsByClassName('userStoryEditStatus')[0].classList.remove('showuserStoryEditStatus')
                                 }}>
                                     <div>
                                         {(IndividualTask?.owner?.image !== undefined && IndividualTask?.owner?.image!=='' && IndividualTask?.owner?.image.url !== "") ? <img
@@ -187,7 +188,8 @@ const EditTask = ({ }) => {
                             <div className='statusHolder' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '16px', marginTop: '10px', position: 'relative', flexWrap: 'wrap' }}>
                                 <div>
                                     <div style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} onClick={() => {
-                                        document.getElementsByClassName('userStoryEditStatus')[0].classList.add('showuserStoryEditStatus')
+                                        document.getElementsByClassName('userStoryEditStatus')[0].classList.toggle('showuserStoryEditStatus')
+                                        document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                                     }}>
                                         <div className='' style={{ borderRadius: '50%', height: '10px', width: '10px', background: taskStatuses.filter(f => f.status == IndividualTask?.status)[0]?.color }}></div> <div>{IndividualTask?.status} <i className='fas fa-caret-down'></i></div>
                                     </div>
