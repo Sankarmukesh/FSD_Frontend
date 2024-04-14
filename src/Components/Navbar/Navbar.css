@@ -218,6 +218,7 @@ img {
 
 .userDetails {
 padding: 35px;
+padding-bottom: 43px;
   height: 100px;
   width: 380px;
   background: var(--user-details-container-bg);
