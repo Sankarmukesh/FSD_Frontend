@@ -178,14 +178,14 @@ const EditUserStory = ({ }) => {
                               <div className='userStoryEditAllUserBox' style={{ display: 'none', cursor: 'pointer' }} onMouseLeave={() => {
                                   document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                               }}>
-                                  {projectUsers?.map(d => (
+                                  {projectUsers.length>0 ? projectUsers?.map(d => (
                                       <div onClick={(e) => {
                                           setUserStory((prev) => ({ ...prev, owner: d }))
                                           document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                                       }}>
                                           {d.userName}
                                       </div>
-                                  ))}
+                                  )): <div>No users added to this project.</div>}
                               </div>
                           </div>
 
