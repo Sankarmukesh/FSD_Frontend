@@ -79,7 +79,7 @@ const UserStories = () => {
     }
   }
   return (
-    <div style={{ padding: '10px' }} className='userStoriesHeaderContainer'>
+    <div style={{ padding: '0px 10px 10px 10px' }} className='userStoriesHeaderContainer'>
       {
         project._id !== undefined &&
         <><div className='userStoriesHeader'>
