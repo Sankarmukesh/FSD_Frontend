@@ -264,14 +264,14 @@ const EditUserStory = ({ }) => {
                                               borderRadius: "50%",
                                               cursor: "pointer",
                                               maxWidth: "100%",
-                                              height: '60px', width: '60px',
+                                              height: '50px', width: '50px',
                                               display: 'block', marginLeft: '0px',
                                           }}
                                           src={
                                               image !== undefined && image !== "" ? image : "/profile.png"
                                           }
                                           alt="Profile"
-                                      /> : <NameGenerator userName={userName} sizes={{ height: '60px', width: '60px', fontSize: '26px' }} />}
+                                      /> : <NameGenerator userName={userName} sizes={{ height: '40px', width: '40px', fontSize: '26px' }} />}
 
                                   </div>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>
@@ -313,7 +313,7 @@ const EditUserStory = ({ }) => {
                                               ts?.owner?.image !== undefined && ts?.owner?.image !== "" ? ts?.owner?.image.url : "/profile.png"
                                           }
                                           alt="Profile"
-                                      /> : <NameGenerator userName={ts?.owner?.userName} sizes={{ height: '60px', width: '60px', fontSize: '8px' }} />}
+                                      /> : <NameGenerator userName={ts?.owner?.userName} sizes={{ height: '40px', width: '40px', fontSize: '8px' }} />}
 
                                   </div>
                                   <div>

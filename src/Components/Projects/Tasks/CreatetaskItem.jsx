@@ -14,7 +14,9 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
     const [owner, setowner] = useState('')
     const { email, user_id } = useSelector((store) => store.auth.loginDetails);
     const textAreaRef = useRef(null)
-    
+    const projectUsers = useSelector(
+        (store) => store.proj.projectUsers
+    );
 
 
     useEffect(() => {
@@ -70,7 +72,7 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
                           setowner(e.target.value)
                       }}>
                           <option value=''>Select Owner</option>
-                          {users.map(op => (
+                            {projectUsers?.map(op => (
                               <option value={op._id}>{op.userName}</option>
                           ))}
                       </select>

@@ -87,7 +87,7 @@ const App = () => {
   }, [])
   useEffect(() => {
     if (localStorage.getItem('project') && allProjects.length > 0 && allProjects?.filter(f => f._id == JSON.parse(localStorage.getItem('project'))._id).length > 0) {
-      dispatch(setProjectUsers(JSON.parse(localStorage.getItem('project'))?.teamMembers || []))
+      dispatch(setProjectUsers(allProjects?.find(f => f?._id?.toString() == JSON.parse(localStorage.getItem('project'))?._id?.toString())?.teamMembers || []))
 
     } else {
       if (allProjects.length > 0) {

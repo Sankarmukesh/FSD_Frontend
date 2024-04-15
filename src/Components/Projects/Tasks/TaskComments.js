@@ -41,14 +41,14 @@ const TaskComments = ({ us }) => {
                             borderRadius: "50%",
                             cursor: "pointer",
                             maxWidth: "100%",
-                            height: '60px', width: '60px',
+                            height: '50px', width: '50px',
                             display: 'block', marginLeft: '0px',
                         }}
                         src={
                             us?.commentBy?.image !== undefined && us?.commentBy?.image !== "" ? us?.commentBy?.image.url : "/profile.png"
                         }
                         alt="Profile"
-                    /> : <NameGenerator userName={us?.commentBy?.userName} sizes={{ height: '60px', width: '60px', fontSize: '26px' }} />}
+                    /> : <NameGenerator userName={us?.commentBy?.userName} sizes={{ height: '40px', width: '40px', fontSize: '26px' }} />}
 
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>

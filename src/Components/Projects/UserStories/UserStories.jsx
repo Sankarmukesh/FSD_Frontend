@@ -21,7 +21,9 @@ const UserStories = () => {
   const { email, user_id } = useSelector((store) => store.auth.loginDetails);
   const [users, setUsers] = useState([])
   const textAreaRef = useRef(null)
-
+  const projectUsers = useSelector(
+    (store) => store.proj.projectUsers
+  );
   useEffect(() => {
     if (createWorkItem) {
       textAreaRef?.current?.focus()
@@ -105,7 +107,7 @@ const UserStories = () => {
                     setowner(e.target.value)
                   }}>
                     <option value=''>Select Owner</option>
-                    {users.map(op => (
+                    {projectUsers?.map(op => (
                       <option value={op._id}>{op.userName}</option>
                     ))}
                   </select>

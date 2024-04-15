@@ -68,6 +68,7 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
                 })
             );
             localStorage.setItem('project', JSON.stringify(res.data));
+            dispatch(setProjectUsers(teamMembers))
             setSelectedProject(res.data)
             setTeamMembers([])
             setSendingEmail([])
