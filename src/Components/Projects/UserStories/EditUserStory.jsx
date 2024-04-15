@@ -12,6 +12,7 @@ import { Label } from '@mui/icons-material';
 import SendIcon from '@mui/icons-material/Send';
 import UserStoryComments from './UserStoryComments';
 import CloseIcon from '@mui/icons-material/Close';
+import ImageGenerator from '../../Common/ImageGenerator';
 
 const EditUserStory = ({ }) => {
     const [open, setOpen] = useState(true)
@@ -157,19 +158,8 @@ const EditUserStory = ({ }) => {
                                   document.getElementsByClassName('userStoryEditStatus')[0].classList.remove('showuserStoryEditStatus')
                               }}>
                                   <div>
-                                      {(userStory?.owner?.image !== undefined && userStory?.owner?.image !== '' && userStory?.owner?.image.url !== "") ? <img
-                                          style={{
-                                              borderRadius: "50%",
-                                              cursor: "pointer",
-                                              maxWidth: "100%",
-                                              height: '35px', width: '35px', marginLeft: '0',
-                                              display: 'block'
-                                          }}
-                                          src={
-                                              userStory?.owner?.image !== undefined && userStory?.owner?.image !== "" ? userStory?.owner?.image.url : "/profile.png"
-                                          }
-                                          alt="Profile"
-                                      /> : <NameGenerator userName={userStory?.owner?.userName} sizes={{ height: '35px', width: '35px', fontSize: '8px' }} />}
+                                      {(userStory?.owner?.image !== undefined && userStory?.owner?.image !== '' && userStory?.owner?.image.url !== "") ? 
+                                          <ImageGenerator userName={userName} img={userStory?.owner?.image.url} sizes={{height:'43px', width: '43px'}} /> : <NameGenerator userName={userStory?.owner?.userName} sizes={{ height: '35px', width: '35px', fontSize: '8px' }} />}
 
                                   </div>
                                   <div>{userStory?.owner?.userName} <i className='fas fa-caret-down'></i> (Owner)</div>
@@ -179,11 +169,20 @@ const EditUserStory = ({ }) => {
                                   document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                               }}>
                                   {projectUsers.length>0 ? projectUsers?.map(d => (
-                                      <div onClick={(e) => {
+                                      <div style={{display: 'flex', gap: '10px'}} onClick={(e) => {
                                           setUserStory((prev) => ({ ...prev, owner: d }))
                                           document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                                       }}>
-                                          {d.userName}
+                                          <div>
+                                              {(d?.image !== undefined && d?.image !== '' && d?.image.url !== "") ?
+                                                  <ImageGenerator userName={d.userName} img={d?.image.url} sizes={{ height: '45px', width: '45px' }} /> : <NameGenerator userName={d.userName} sizes={{ height: '35px', width: '35px', fontSize: '8px' }} />}
+  
+                                          </div>
+                                          <div style={{display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '12px' }}>
+                                              <div>{d.userName}</div>
+                                              <div>{d.email}</div>
+                                           </div>
+
                                       </div>
                                   )): <div>No users added to this project.</div>}
                               </div>
@@ -259,19 +258,9 @@ const EditUserStory = ({ }) => {
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                   <div>
-                                      {(image !== undefined && image !== "") ? <img
-                                          style={{
-                                              borderRadius: "50%",
-                                              cursor: "pointer",
-                                              maxWidth: "100%",
-                                              height: '50px', width: '50px',
-                                              display: 'block', marginLeft: '0px',
-                                          }}
-                                          src={
-                                              image !== undefined && image !== "" ? image : "/profile.png"
-                                          }
-                                          alt="Profile"
-                                      /> : <NameGenerator userName={userName} sizes={{ height: '40px', width: '40px', fontSize: '26px' }} />}
+                                      {(image !== undefined && image !== "") ?
+                                      <ImageGenerator userName={userName} img={image} sizes={{height:'50px', width: '50px'}} />
+                                        : <NameGenerator userName={userName} sizes={{ height: '40px', width: '40px', fontSize: '26px' }} />}
 
                                   </div>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>
@@ -301,19 +290,9 @@ const EditUserStory = ({ }) => {
                           {userStory?.taskIds?.map(ts => (
                               <div style={{ display: 'flex', gap: '5px', cursor: 'pointer' }} onClick={() => navigate(`/task/${projectId}/${userStory._id}/${ts._id}/edit`)}>
                                   <div>
-                                      {(ts?.owner?.image !== undefined && ts?.owner?.image !== '' && ts?.owner?.image.url !== "") ? <img
-                                          style={{
-                                              borderRadius: "50%",
-                                              cursor: "pointer",
-                                              maxWidth: "100%",
-                                              height: '50px', width: '50px', marginLeft: '0',
-                                              display: 'block'
-                                          }}
-                                          src={
-                                              ts?.owner?.image !== undefined && ts?.owner?.image !== "" ? ts?.owner?.image.url : "/profile.png"
-                                          }
-                                          alt="Profile"
-                                      /> : <NameGenerator userName={ts?.owner?.userName} sizes={{ height: '40px', width: '40px', fontSize: '8px' }} />}
+                                      {(ts?.owner?.image !== undefined && ts?.owner?.image !== '' && ts?.owner?.image.url !== "") ?
+                                        <ImageGenerator userName={ts?.owner?.userName} img={ts?.owner?.image.url} sizes={{height:'50px', width: '50px'}} />
+                                            : <NameGenerator userName={ts?.owner?.userName} sizes={{ height: '40px', width: '40px', fontSize: '8px' }} />}
 
                                   </div>
                                   <div>

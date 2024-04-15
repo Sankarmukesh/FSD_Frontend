@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApiServices } from '../../../Services/ApiServices';
 import { setToast } from '../../../redux/AuthReducers/AuthReducer';
 import { ToastColors } from '../../Toast/ToastColors';
+import ImageGenerator from '../../Common/ImageGenerator';
 
 const UserStoryComments = ({ us }) => {
     const [newComment, setNewComment] = useState('')
@@ -36,19 +37,9 @@ const UserStoryComments = ({ us }) => {
       <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div>
-                  {(us?.commentBy?.image !== undefined && us?.commentBy?.image !== "" && us?.commentBy?.image.url !== "") ? <img
-                      style={{
-                          borderRadius: "50%",
-                          cursor: "pointer",
-                          maxWidth: "100%",
-                          height: '50px', width: '50px',
-                          display: 'block', marginLeft: '0px',
-                      }}
-                      src={
-                          us?.commentBy?.image !== undefined && us?.commentBy?.image !== "" ? us?.commentBy?.image.url : "/profile.png"
-                      }
-                      alt="Profile"
-                  /> : <NameGenerator userName={us?.commentBy?.userName} sizes={{ height: '40px', width: '40px', fontSize: '26px' }} />}
+                  {(us?.commentBy?.image !== undefined && us?.commentBy?.image !== "" && us?.commentBy?.image.url !== "") ?
+                      <ImageGenerator userName={us?.commentBy?.userName} img={us?.commentBy?.image.url} sizes={{height:'50px', width: '50px'}} />
+                    : <NameGenerator userName={us?.commentBy?.userName} sizes={{ height: '40px', width: '40px', fontSize: '26px' }} />}
 
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>

@@ -14,6 +14,7 @@ import TaskComments from './TaskComments';
 import CloseIcon from '@mui/icons-material/Close';
 import './EditTask.css'
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import ImageGenerator from '../../Common/ImageGenerator';
 const EditTask = ({ }) => {
     const [open, setOpen] = useState(true)
     const { email, image, user_id, userName } = useSelector(
@@ -156,19 +157,9 @@ const EditTask = ({ }) => {
                                     document.getElementsByClassName('userStoryEditStatus')[0].classList.remove('showuserStoryEditStatus')
                                 }}>
                                     <div>
-                                        {(IndividualTask?.owner?.image !== undefined && IndividualTask?.owner?.image!=='' && IndividualTask?.owner?.image.url !== "") ? <img
-                                            style={{
-                                                borderRadius: "50%",
-                                                cursor: "pointer",
-                                                maxWidth: "100%",
-                                                height: '35px', width: '35px', marginLeft: '0',
-                                                display: 'block'
-                                            }}
-                                            src={
-                                                IndividualTask?.owner?.image !== undefined && IndividualTask?.owner?.image !== "" ? IndividualTask?.owner?.image.url : "/profile.png"
-                                            }
-                                            alt="Profile"
-                                        /> : <NameGenerator userName={IndividualTask?.owner?.userName} sizes={{ height: '35px', width: '35px', fontSize: '8px' }} />}
+                                        {(IndividualTask?.owner?.image !== undefined && IndividualTask?.owner?.image !== '' && IndividualTask?.owner?.image.url !== "") ?
+                                            <ImageGenerator userName={IndividualTask?.owner?.userName} img={IndividualTask?.owner?.image.url} sizes={{ height: '43px', width: '43px' }} />
+                                           : <NameGenerator userName={IndividualTask?.owner?.userName} sizes={{ height: '35px', width: '35px', fontSize: '8px' }} />}
 
                                     </div>
                                     <div>{IndividualTask?.owner?.userName} <i className='fas fa-caret-down'></i> (Owner)</div>
@@ -177,12 +168,30 @@ const EditTask = ({ }) => {
                                 <div className='userStoryEditAllUserBox' style={{ display: 'none', cursor: 'pointer' }} onMouseLeave={() => {
                                     document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                                 }}>
-                                    {projectUsers.length > 0 ?projectUsers?.map(d => (
+                                    {/* {projectUsers.length > 0 ?projectUsers?.map(d => (
                                         <div onClick={(e) => {
                                             setIndividualTask((prev) => ({ ...prev, owner: d }))
                                             document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                                         }}>
                                             {d.userName}
+                                        </div>
+                                    )) : <div>No users added to this project.</div>} */}
+
+                                    {projectUsers.length > 0 ? projectUsers?.map(d => (
+                                        <div style={{ display: 'flex', gap: '10px' }} onClick={(e) => {
+                                            setIndividualTask((prev) => ({ ...prev, owner: d }))
+                                            document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
+                                        }}>
+                                            <div>
+                                                {(d?.image !== undefined && d?.image !== '' && d?.image.url !== "") ?
+                                                    <ImageGenerator userName={d.userName} img={d?.image.url} sizes={{ height: '45px', width: '45px' }} /> : <NameGenerator userName={d.userName} sizes={{ height: '35px', width: '35px', fontSize: '8px' }} />}
+
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '12px' }}>
+                                                <div>{d.userName}</div>
+                                                <div>{d.email}</div>
+                                            </div>
+
                                         </div>
                                     )) : <div>No users added to this project.</div>}
                                 </div>
@@ -264,19 +273,10 @@ const EditTask = ({ }) => {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                     <div>
-                                        {(image !== undefined && image !== "") ? <img
-                                            style={{
-                                                borderRadius: "50%",
-                                                cursor: "pointer",
-                                                maxWidth: "100%",
-                                                height: '60px', width: '60px',
-                                                display: 'block', marginLeft: '0px',
-                                            }}
-                                            src={
-                                                image !== undefined && image !== "" ? image : "/profile.png"
-                                            }
-                                            alt="Profile"
-                                        /> : <NameGenerator userName={userName} sizes={{ height: '60px', width: '60px', fontSize: '26px' }} />}
+                                        {(image !== undefined && image !== "") ?
+                                            <ImageGenerator userName={userName} img={image} sizes={{ height: '50px', width: '50px' }} />
+
+                                           : <NameGenerator userName={userName} sizes={{ height: '60px', width: '60px', fontSize: '26px' }} />}
 
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>

@@ -135,7 +135,7 @@
 
 
 .userStoryEditAllUserBox, .userStoryEditStatus{
-    width: 300px;
+    width: 350px;
     height: 200px;
     overflow-y: scroll;
     padding: 10px 0px;
@@ -150,7 +150,11 @@
     flex-direction: column;
     gap: 5px;
 }
-.userStoryEditAllUserBox div, .userStoryEditStatus div{
+.userStoryEditAllUserBox>div {
+    
+    padding: 10px;
+}
+ .userStoryEditStatus div{
     padding: 10px;
 
 }
