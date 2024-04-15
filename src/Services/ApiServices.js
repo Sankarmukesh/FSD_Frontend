@@ -125,7 +125,7 @@ export const ApiServices = {
   getProjects: (obj) => {
     return new Promise((resolve, reject) => {
       axiosInstance
-        .get(`/projectDetails/getAllProjects`)
+        .post(`/projectDetails/getAllProjects`, obj)
         .then((res) => {
           if (res) {
             resolve(res);

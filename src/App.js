@@ -39,7 +39,7 @@ const NoMatch = () => {
   return (
     <div className="noMatch">
       <div className="noRoute-image">
-        <img src="https://tse2.mm.bing.net/th?id=OIP.Jb4XrrIxatYfB2DQxV0TngHaFs&pid=Api&P=0" style={{objectFit: 'contain', mixBlendMode: 'multiply'}} alt="gif" />
+        <img src="https://tse2.mm.bing.net/th?id=OIP.Jb4XrrIxatYfB2DQxV0TngHaFs&pid=Api&P=0" style={{ objectFit: 'contain', mixBlendMode: 'multiply' }} alt="gif" />
       </div>
     </div>
   );
@@ -56,7 +56,7 @@ const App = () => {
 
   // intialize socket io
   const socket = useRef();
-  const { email, user_id } = useSelector((store) => store.auth.loginDetails);
+  const { email, user_id, role } = useSelector((store) => store.auth.loginDetails);
 
   useEffect(() => {
     socket.current = io(socket_io);
@@ -73,29 +73,33 @@ const App = () => {
   const [allProjects, setAllProjects] = useState('')
 
   useEffect(() => {
-    ApiServices.getProjects().then(res => {
-      setAllProjects(res.data)
-    }).catch(err => {
-      dispatch(
-        setToast({
-          message: "Error occured !",
-          bgColor: ToastColors.failure,
-          visible: "yes",
-        })
-      );
-    })
-  }, [])
-  useEffect(() => {
-    if (localStorage.getItem('project') && allProjects.length > 0 && allProjects?.filter(f => f._id == JSON.parse(localStorage.getItem('project'))._id).length > 0) {
-      dispatch(setProjectUsers(allProjects?.find(f => f?._id?.toString() == JSON.parse(localStorage.getItem('project'))?._id?.toString())?.teamMembers || []))
+    if (localStorage.getItem('user')) {
+      ApiServices.getProjects({ role, user_id }).then(res => {
+        setAllProjects(res.data)
+        if (res.data.length > 0) {
+          if (localStorage.getItem('project')) {
+            dispatch(setProjectUsers(res.data?.find(f => f?._id?.toString() == JSON.parse(localStorage.getItem('project'))?._id?.toString())?.teamMembers || []))
+          } else {
+            console.log(res.data);
+            localStorage.setItem('project', JSON.stringify(res.data[0]))
+            dispatch(setProjectUsers(res.data[0]?.teamMembers || []))
 
-    } else {
-      if (allProjects.length > 0) {
-        localStorage.setItem('project', JSON.stringify(allProjects[0]))
-        dispatch(setProjectUsers(allProjects[0]?.teamMembers || []))
-      }
+          }
+        }
+
+
+      }).catch(err => {
+        dispatch(
+          setToast({
+            message: "Error occured !",
+            bgColor: ToastColors.failure,
+            visible: "yes",
+          })
+        );
+      })
     }
-  }, [allProjects])
+
+  }, [localStorage.getItem('user')])
 
   // live message updates
   useEffect(() => {
@@ -107,15 +111,15 @@ const App = () => {
   }, []);
 
   //IT IS FOR DARK AND WHITE THEME
-    useEffect(() => {
-      if (!localStorage.getItem('theme')) {
-        localStorage.setItem('theme', 'light')
-        document.body.setAttribute('data-theme', 'light')
-      } else {
-        document.body.setAttribute('data-theme', localStorage.getItem('theme'))
+  useEffect(() => {
+    if (!localStorage.getItem('theme')) {
+      localStorage.setItem('theme', 'light')
+      document.body.setAttribute('data-theme', 'light')
+    } else {
+      document.body.setAttribute('data-theme', localStorage.getItem('theme'))
 
-     }
-   }, [])
+    }
+  }, [])
   return (
     <div>
       <Suspense

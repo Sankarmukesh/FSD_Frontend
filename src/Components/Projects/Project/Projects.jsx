@@ -35,7 +35,7 @@ const Projects = () => {
     };
   }, []);
   useEffect(() => {
-    ApiServices.getProjects().then(res => {
+    ApiServices.getProjects({role, user_id}).then(res => {
       setAllProjects(res.data)
     }).catch(err => {
       dispatch(
