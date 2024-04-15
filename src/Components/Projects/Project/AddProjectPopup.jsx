@@ -9,7 +9,7 @@ import { setProjectId, setProjectUsers } from '../../../redux/ProjectsReducers/P
 import CloseIcon from '@mui/icons-material/Close';
 
 
-const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject, allProjects, setSelectedProject }) => {
+const AddProjectPopup = ({ count, open, setOpen, setAllProjects, type, selectedProject, allProjects, setSelectedProject }) => {
     const { email, image, user_id, userName } = useSelector(
         (store) => store.auth.loginDetails
     );
@@ -32,9 +32,10 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
             setTeamMembers(selectedProject.teamMembers || [])
         } else {
             setProjectName('')
-            setProjectId({})
+            setTeamMembers([])
+
         }
-    }, [selectedProject, type])
+    }, [selectedProject, type, count])
     const handleClose = () => {
         setTeamMembers([])
         setSendingEmail([])

@@ -12,6 +12,7 @@ const Projects = () => {
   const { email, image, user_id, userName, role } = useSelector(
     (store) => store.auth.loginDetails
   );
+  const [count, setCount] = useState(0);
   const [allProjects, setAllProjects] = useState('')
   const [selectedProject, setSelectedProject] = useState({})
   const dispatch = useDispatch();
@@ -111,6 +112,7 @@ const Projects = () => {
                       document.getElementsByClassName('projectDetails')[0].classList.remove('showprojectDetails');
                       setAddPopupopen(true)
                       setType('update')
+                      setCount(prev=>prev+1)
                     }}>
                       <i class="fas fa-pen"></i>
                     </div>
@@ -136,7 +138,7 @@ const Projects = () => {
         }}>Add Work Item</button>
         }
       </div>
-      <AddProjectPopup type={type} open={addPopupopen} setOpen={setAddPopupopen} setAllProjects={setAllProjects} selectedProject={selectedProject} allProjects={allProjects} setSelectedProject={setSelectedProject} />
+      <AddProjectPopup count={count} type={type} open={addPopupopen} setOpen={setAddPopupopen} setAllProjects={setAllProjects} selectedProject={selectedProject} allProjects={allProjects} setSelectedProject={setSelectedProject} />
     </div>
   )
 }
