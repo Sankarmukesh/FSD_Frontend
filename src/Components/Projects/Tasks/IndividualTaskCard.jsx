@@ -8,6 +8,8 @@ import { ToastColors } from '../../Toast/ToastColors';
 import { useNavigate } from 'react-router-dom';
 import NameGenerator from '../../Common/NameGenerator';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import BugReportIcon from '@mui/icons-material/BugReport';
+import CreateItemDecider from '../../Common/CreateItemDecider';
 
 const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, allUserStories }) => {
     const { email, role } = useSelector((store) => store.auth.loginDetails);
@@ -48,8 +50,9 @@ const IndividualTaskCard = ({ tasks, projectId, setallUserStories, userStory, al
                 <div onClick={() => {
                     navigate(`/task/${projectId}/${userStory._id}/${tasks._id}/edit`)
                 }} style={{ display: 'flex', gap: '5px', alignItems: 'center', cursor: 'pointer' }} className='textUnderLinehover'>
-                    <AssignmentIcon style={{ color: taskStatuses.filter(f => f.status == tasks?.status)[0]?.color }} /><span style={{ width: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '18px', fontWeight: '600' }}>{tasks.name}</span>
-                </div>
+                    <CreateItemDecider type={tasks?.type} color={tasks?.type == 'bug' ? 'red' : taskStatuses.filter(f => f.status == tasks?.status)[0]?.color} />
+                    <span style={{ width: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '18px', fontWeight: '600' }}>{tasks.name}</span>
+                  </div>
                 <div onClick={() => {
                     navigate(`/task/${projectId}/${userStory._id}/${tasks._id}/edit`)
                 }} className='textUnderLinehover' style={{ fontSize: '14px', width: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', }}>

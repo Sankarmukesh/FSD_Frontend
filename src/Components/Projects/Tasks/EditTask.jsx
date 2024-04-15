@@ -15,6 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import './EditTask.css'
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import ImageGenerator from '../../Common/ImageGenerator';
+import CreateItemDecider from '../../Common/CreateItemDecider';
 const EditTask = ({ }) => {
     const [open, setOpen] = useState(true)
     const { email, image, user_id, userName } = useSelector(
@@ -101,7 +102,7 @@ const EditTask = ({ }) => {
 
     const updateTasks = async () => {
         setIsLoading(true);
-        await ApiServices.updateTasks({ taskId: taskId, owner: IndividualTask?.owner, name: IndividualTask?.name, description: IndividualTask?.description, updatedBy: user_id, status: IndividualTask?.status, due: IndividualTask?.due }).then(res => {
+        await ApiServices.updateTasks({ taskId: taskId, owner: IndividualTask?.owner, type: IndividualTask?.type || 'task', name: IndividualTask?.name, description: IndividualTask?.description, updatedBy: user_id, status: IndividualTask?.status, due: IndividualTask?.due }).then(res => {
             dispatch(
                 setToast({
                     message: "User Story updated",
@@ -142,7 +143,8 @@ const EditTask = ({ }) => {
                         <div>
                             <div>
                                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                                    <AssignmentIcon style={{ color: taskStatuses.filter(f => f.status == IndividualTask?.status)[0]?.color }} /><span style={{ fontSize: '20px', fontWeight: '600' }}>Task {IndividualTask?._id}</span>
+                                    <CreateItemDecider type={IndividualTask?.type} color={IndividualTask?.type == 'bug' ? 'red' : taskStatuses.filter(f => f.status == IndividualTask?.status)[0]?.color} />
+                                    <span style={{ fontSize: '20px', fontWeight: '600' }}>{IndividualTask?.type?.toUpperCase()} {IndividualTask?._id}</span>
                                 </div>
 
                             </div>

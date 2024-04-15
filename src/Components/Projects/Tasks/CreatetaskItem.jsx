@@ -5,6 +5,10 @@ import { setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReduce
 import { ApiServices } from '../../../Services/ApiServices';
 import { setToast } from '../../../redux/AuthReducers/AuthReducer';
 import { ToastColors } from '../../Toast/ToastColors';
+import BugReportIcon from '@mui/icons-material/BugReport';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import CreateItemDecider from '../../Common/CreateItemDecider';
+import { taskStatuses } from '../../../Utils';
 
 const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStories, users }) => {
     const [createTask, setCreateTask] = useState(false)
@@ -14,6 +18,7 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
     const [owner, setowner] = useState('')
     const { email, user_id } = useSelector((store) => store.auth.loginDetails);
     const textAreaRef = useRef(null)
+    const [itemType, setItemType] = useState('')
     const projectUsers = useSelector(
         (store) => store.proj.projectUsers
     );
@@ -31,7 +36,7 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
     const addTask = async () => {
         // projectId: projectId, userStoryId: userStoryId, name: name, description, owner, createdBy: user_id, status: 'New', due 
         if (taskName !== '' && projectId !== undefined && owner !== '') {
-            await ApiServices.addTasks({ userStoryId:userStory._id, projectId: projectId, name: taskName, description: description, owner: owner, user_id: user_id, due: due }).then(res => {
+            await ApiServices.addTasks({ userStoryId:userStory._id, projectId: projectId, name: taskName, description: description, owner: owner, user_id: user_id, due: due, type: itemType }).then(res => {
                 setallUserStories(allUserStories.map(al => al._id == userStory._id ? { ...al, taskIds: [res.data, ...al.taskIds]} : al))
                 setTaskName('')
                 setdescription('')
@@ -55,8 +60,11 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
           {createTask ?
               <div className='userStoryDetails'>
                   <div className='userStoryCard taskCard'>
-                  
-                  <div >
+                      <label>
+                          <CreateItemDecider type={itemType} color='#0078D4' />
+                          {itemType?.toUpperCase()}
+                      </label>
+                  <div>
                       <textarea ref={textAreaRef} placeholder='Enter name' rows={5} columns={6} value={taskName} onChange={(e) => { setTaskName(e.target.value) }}></textarea>
 
                   </div>
@@ -94,7 +102,18 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
                   </div>
               </div>
            :
-              <button style={{ height: '30px', width: '50px', padding: '5px' }} onClick={()=>setCreateTask(true)}>Add Task</button>}
+              <div style={{display: 'flex', gap: '5px'}}>
+                  <button style={{ height: '30px', width: '50px', padding: '5px' }} onClick={() => {
+                      setCreateTask(true)
+                      setItemType('task')
+                  }}>Add Task</button>
+                  <button style={{ height: '30px', width: '50px', padding: '5px' }} onClick={() => {
+                      setCreateTask(true)
+                      setItemType('bug')
+                  }}>Add Bug</button>
+              </div>
+
+          }
       </div>
   )
 }
