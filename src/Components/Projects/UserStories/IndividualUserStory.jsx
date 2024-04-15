@@ -29,7 +29,7 @@ const IndividualUserStory = ({ projectId, setallUserStories, au, allUserStories 
     }
     return (
     <div className='userStoryDetails'>
-            <div className='userStoryCard' style={{ borderLeft: `3px solid ${taskStatuses.filter(f => f.status == au.status)[0]?.color}`}}>
+            <div className='userStoryCard minimalUserStoryCard' style={{ borderLeft: `3px solid ${taskStatuses.filter(f => f.status == au.status)[0]?.color}`}}>
                 <div style={{position: 'absolute', right: '8px', fontSize: '12px', cursor: 'pointer'}} onClick={(e)=>{
                     document.getElementById(`userStoryMenucard${au._id}`).classList.toggle('show')
                 }}>

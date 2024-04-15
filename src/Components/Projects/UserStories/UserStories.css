@@ -68,6 +68,9 @@
 
 
 }
+.minimalUserStoryCard{
+        height: 100px !important;
+}
 .taskCard{
      display: flex;
     flex-direction: column;
