@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApiServices } from '../../../Services/ApiServices';
 import { setToast } from '../../../redux/AuthReducers/AuthReducer';
 import { ToastColors } from '../../Toast/ToastColors';
-import { setProjectId } from '../../../redux/ProjectsReducers/ProjectReducer';
+import { setProjectId, setProjectUsers } from '../../../redux/ProjectsReducers/ProjectReducer';
 import CloseIcon from '@mui/icons-material/Close';
 
 
@@ -95,6 +95,8 @@ const AddProjectPopup = ({ open, setOpen, setAllProjects, type, selectedProject,
                     visible: "yes",
                 })
             );
+            dispatch(setProjectUsers(teamMembers))
+
             setTeamMembers([])
             setSendingEmail([])
             setdeletingEmail([])
