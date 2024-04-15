@@ -13,7 +13,7 @@ const UserCard = ({ d, allRoles }) => {
             await ApiServices.changeUserRoles({ id: d?._id, role: updatedRole }).then(res => {
                 d.role = updatedRole
                 dispatch(setToast({
-                    message: "Role Updated for" + d?.userName,
+                    message: "Role Updated for " + d?.userName,
                     bgColor: ToastColors.success,
                     visible: "yes",
                 }))
