@@ -91,7 +91,7 @@ const Projects = () => {
         <div id='projectBox' onClick={(e) => {
           document.getElementsByClassName('projectDetails')[0].classList.add('showprojectDetails');
         }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><AccountTreeIcon /><span style={{ fontSize: '20px', fontWeight: '400', whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{selectedProject?.name}</span> </div><div><i class="fas fa-caret-down"></i></div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><AccountTreeIcon /><span style={{ fontSize: '20px', fontWeight: '400', whiteSpace: 'nowrap', width: '180px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{selectedProject?.name}</span> </div><div><i class="fas fa-caret-down"></i></div>
         </div>
           <div className='projectDetails' style={{ display: 'none', zIndex: '1000' }} ref={projectDetailsRef}>
             {allProjects?.map(d => (
@@ -124,7 +124,7 @@ const Projects = () => {
         </>
         : <div style={{width: '100%'}}>No Projects assigned to you by admin.</div>
       }
-      <div style={{display: 'flex', gap: '10px'}}>
+      <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
         {role == 'Admin' && <button style={{ padding: '10px', whiteSpace: 'nowrap' }} onClick={() => {
           setType('add')
 

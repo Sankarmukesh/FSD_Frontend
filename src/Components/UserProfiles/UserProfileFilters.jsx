@@ -22,12 +22,15 @@ const UserProfileFilters = ({ setValue, data, value }) => {
     }, []);
   return (
       <div style={{position: 'relative'}}>
-          <div className='filterBox' id='filterBox' onClick={(e) => {
+          <div onClick={(e) => {
               console.log(document.getElementsByClassName('filterBoxData')[0])
               document.getElementsByClassName('filterBoxData')[0].classList.toggle('showfilterBoxData')
-          }} >
-              Person: <span>{value}</span> <i class="fas fa-caret-down"></i>
-          </div>
+          }} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className='filterBox'>
+              <div  id='filterBox' >
+                  Person: <span>{value}</span>
+              </div>
+              <div><i class="fas fa-caret-down"></i></div>
+         </div>
           <div className='filterBoxData' style={{ display: 'none', cursor: 'pointer' }} ref={filterBoxDataRef}>
               <div onClick={(e) => {
                   setValue('')

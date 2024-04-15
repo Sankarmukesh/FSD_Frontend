@@ -73,7 +73,7 @@ padding: 10px !important;
 
 @media (max-width: 768px) {
     .projectDetails{
-        width: 300px !important;
+        width: 350px !important;
     }
     .projC input{
       width: 88% !important;

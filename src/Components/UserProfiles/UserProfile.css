@@ -2,6 +2,7 @@
     padding: 10px;
     background: var(--user-filter-background);
     width: auto;
+    max-width: 350px;
     display: inline-block;
     cursor: pointer;
     min-width: 450px;
@@ -61,9 +62,14 @@
 }
 
 @media (max-width: 768px) { 
-.filterBox, .filterBoxData{
+.filterBox{
     width: 300px !important;
     
     min-width: 300px !important;
+}
+.filterBoxData{
+    width: 330px !important;
+    
+    min-width: 330px !important;
 }
 }
