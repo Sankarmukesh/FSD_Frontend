@@ -10,7 +10,8 @@ export const projectsSlice = createSlice(
         name: 'projects',
         initialState: {
             projectId: {},
-            createWorkItem: false
+            createWorkItem: false,
+            projectUsers: []
         },
         reducers: {
             setProjectId: (state, action) => {
@@ -18,13 +19,15 @@ export const projectsSlice = createSlice(
             },
             setcreateWorkItem: (state, action) => {
                 state.createWorkItem = action.payload;
+            }, setProjectUsers: (state, action) => {
+                state.projectUsers = action.payload;
             },
             
         }
     });
 
 
-export const { setProjectId, setcreateWorkItem } = projectsSlice.actions;
+export const { setProjectId, setcreateWorkItem, setProjectUsers } = projectsSlice.actions;
 
 // this is for configureStore
 export default projectsSlice.reducer;

@@ -18,6 +18,9 @@ const EditUserStory = ({ }) => {
     const { email, image, user_id, userName } = useSelector(
         (store) => store.auth.loginDetails
     );
+    const projectUsers  = useSelector(
+        (store) => store.proj.projectUsers
+    );
     const [newComment, setNewComment] = useState('')
     const [isLoading, setIsLoading] = useState(false);
     const [users, setUsers] = useState([])
@@ -175,7 +178,7 @@ const EditUserStory = ({ }) => {
                               <div className='userStoryEditAllUserBox' style={{ display: 'none', cursor: 'pointer' }} onMouseLeave={() => {
                                   document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                               }}>
-                                  {users?.map(d => (
+                                  {projectUsers?.map(d => (
                                       <div onClick={(e) => {
                                           setUserStory((prev) => ({ ...prev, owner: d }))
                                           document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')

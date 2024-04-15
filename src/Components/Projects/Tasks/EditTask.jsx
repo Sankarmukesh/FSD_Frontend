@@ -36,6 +36,9 @@ const EditTask = ({ }) => {
     const [IndividualTask, setIndividualTask] = useState(null)
     const { projectId, userStoryId, taskId } = useParams()
     const navigate = useNavigate()
+    const projectUsers = useSelector(
+        (store) => store.proj.projectUsers
+    );
 
     const handleClose = () => {
         setOpen(false);
@@ -174,7 +177,7 @@ const EditTask = ({ }) => {
                                 <div className='userStoryEditAllUserBox' style={{ display: 'none', cursor: 'pointer' }} onMouseLeave={() => {
                                     document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')
                                 }}>
-                                    {users?.map(d => (
+                                    {projectUsers?.map(d => (
                                         <div onClick={(e) => {
                                             setIndividualTask((prev) => ({ ...prev, owner: d }))
                                             document.getElementsByClassName('userStoryEditAllUserBox')[0].classList.remove('showuserStoryEditAllUserBox')

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import './Projects.css'
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import AddProjectPopup from './AddProjectPopup';
-import { setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReducer';
+import { setProjectUsers, setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReducer';
 const Projects = () => {
   const { email, image, user_id, userName, role } = useSelector(
     (store) => store.auth.loginDetails
@@ -94,10 +94,11 @@ const Projects = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><AccountTreeIcon /><span style={{ fontSize: '20px', fontWeight: '400', whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{selectedProject?.name}</span> </div><div><i class="fas fa-caret-down"></i></div>
         </div>
           <div className='projectDetails' style={{ display: 'none', zIndex: '1000' }} ref={projectDetailsRef}>
-            {allProjects.map(d => (
+            {allProjects?.map(d => (
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={(e) => {
                 localStorage.setItem('project', JSON.stringify(d));
                 setSelectedProject(d);
+                dispatch(setProjectUsers(d.teamMembers))
                 document.getElementsByClassName('projectDetails')[0].classList.remove('showprojectDetails');
               }}><div>
                 <div style={{ whiteSpace: 'nowrap', width: '200px', textOverflow: 'ellipsis', overflow: 'hidden' }}>{d.name}</div>
