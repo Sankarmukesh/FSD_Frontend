@@ -122,7 +122,7 @@ const Projects = () => {
             ))}
           </div>
         </>
-        : <div style={{width: '100%'}}>No Projects created</div>
+        : <div style={{width: '100%'}}>No Projects assigned to you by admin.</div>
       }
       <div style={{display: 'flex', gap: '10px'}}>
         {role == 'Admin' && <button style={{ padding: '10px', whiteSpace: 'nowrap' }} onClick={() => {
