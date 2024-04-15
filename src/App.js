@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import {
   Route,
   Routes,
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   apicallloginDetails,
   setOnlineUsers,
+  setToast,
 } from "./redux/AuthReducers/AuthReducer";
 import { io } from "socket.io-client";
 
@@ -18,6 +19,9 @@ import { socket_io } from "./Utils";
 import UserProfiles from "./Components/UserProfiles/UserProfiles";
 import EditUserStory from "./Components/Projects/UserStories/EditUserStory";
 import EditTask from "./Components/Projects/Tasks/EditTask";
+import { setProjectUsers } from "./redux/ProjectsReducers/ProjectReducer";
+import { ApiServices } from "./Services/ApiServices";
+import { ToastColors } from "./Components/Toast/ToastColors";
 
 
 const SignUp = React.lazy(() => import("./Components/Signup/SignUp"));
@@ -66,7 +70,32 @@ const App = () => {
       // console.log(users);
     });
   }, [email]);
+  const [allProjects, setAllProjects] = useState('')
 
+  useEffect(() => {
+    ApiServices.getProjects().then(res => {
+      setAllProjects(res.data)
+    }).catch(err => {
+      dispatch(
+        setToast({
+          message: "Error occured !",
+          bgColor: ToastColors.failure,
+          visible: "yes",
+        })
+      );
+    })
+  }, [])
+  useEffect(() => {
+    if (localStorage.getItem('project') && allProjects.length > 0 && allProjects?.filter(f => f._id == JSON.parse(localStorage.getItem('project'))._id).length > 0) {
+      dispatch(setProjectUsers(JSON.parse(localStorage.getItem('project'))?.teamMembers || []))
+
+    } else {
+      if (allProjects.length > 0) {
+        localStorage.setItem('project', JSON.stringify(allProjects[0]))
+        dispatch(setProjectUsers(allProjects[0]?.teamMembers || []))
+      }
+    }
+  }, [allProjects])
 
   // live message updates
   useEffect(() => {
