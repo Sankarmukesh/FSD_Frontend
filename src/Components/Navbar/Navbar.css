@@ -11,7 +11,7 @@
 .logo img {
   height: auto;
   width: 150px;
-  margin-left: -10px;
+  margin-left: -40px;
 }
 
 .Profile-img {
@@ -167,7 +167,7 @@ color: var( --text-total-color);
   backdrop-filter: blur(5px);
   /* color: var(--navar-text); */
   box-shadow: var(--navbar-header-boxShasow);
-  padding: 15px;
+  padding: 15px  0px;
   font-weight: 600;
   z-index: 999;
   position: sticky;

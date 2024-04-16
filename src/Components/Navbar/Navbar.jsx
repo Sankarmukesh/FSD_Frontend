@@ -165,7 +165,7 @@ const Navbar = () => {
             )}
         </>
         <div title="Help">
-          <HelpOutlineOutlinedIcon className='icon' onClick={()=>setHelpPopOpen(true)} />
+          <HelpOutlineOutlinedIcon className='icon' style={{transform: 'translateY(3px)'}} onClick={()=>setHelpPopOpen(true)} />
 
         </div>
 
