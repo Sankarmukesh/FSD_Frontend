@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
+import { Dialog, DialogTitle, DialogContent, DialogContentText } from '@mui/material';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 
 import { socket_io } from "../../Utils";
 import ProfileImageUpdate from "./ProfileImageUpdate";
@@ -103,6 +105,8 @@ const Navbar = () => {
   }, [window.location.pathname]);
 
 
+  const [helpPopOpen, setHelpPopOpen]= useState(false)
+
 
   const logoutDecider = (value) => {
 
@@ -159,7 +163,11 @@ const Navbar = () => {
               </div>
               </>
             )}
-          </>
+        </>
+        <div title="Help">
+          <HelpOutlineOutlinedIcon className='icon' onClick={()=>setHelpPopOpen(true)} />
+
+        </div>
 
         {/* DARK AND WHITE THEME */}
         <div
@@ -258,6 +266,20 @@ const Navbar = () => {
       
           </div>
         </div>
+
+        <Dialog fullWidth
+          open={helpPopOpen}
+          onClose={() => { setHelpPopOpen(false) }}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+
+        >
+          <div style={{ padding: '10px' }}>
+            Please drop a mail to <a href={`mailto:${process.env.REACT_APP_ADMIN_MAIL}`}>{process.env.REACT_APP_ADMIN_MAIL}</a>
+            <button onClick={() => setHelpPopOpen(false)} style={{ float: 'right' }}>close</button>
+          </div>
+
+        </Dialog>
 
         <ProfileImageUpdate open={open} setOpen={setOpen} />
 
