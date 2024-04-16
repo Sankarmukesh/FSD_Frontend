@@ -140,8 +140,10 @@ const UserStories = () => {
                   </div>
                   <div className='userStoryBoxContainer' style={{ display: 'flex', gap: '10px', flexDirection: 'column', paddingTop: '5px', minWidth: '2250px' }}>
                     <CreatetaskItem users={users} userStory={au} setallUserStories={setallUserStories} projectId={project._id} allUserStories={allUserStories} />
-                    {au.taskIds?.map(tasks => (
+                    {au.taskIds?.map((tasks, i) => (
+                      <div style={{ borderBottom: i == au.taskIds.length-1? 'none' :'1px solid var(--addingCard-bg)', paddingBottom: '5px', paddingLeft: '0'}}>
                         <IndividualTaskCard tasks={tasks} projectId={project._id} userStory={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+                      </div>
                     ))}
                   </div>
                 </div>
