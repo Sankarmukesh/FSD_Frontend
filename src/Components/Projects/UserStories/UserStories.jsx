@@ -91,53 +91,56 @@ const UserStories = () => {
           ))}
 
         </div>
-          <div className='userStoryDetails'>
-            {createWorkItem == true &&
-              <div className='userStoryCard'>
-                
-                <div >
-                  <textarea ref={textAreaRef} placeholder='Enter name' rows={5} columns={6} value={userStoryName} onChange={(e) => { setUsereStoryName(e.target.value) }}></textarea>
-                  
-                </div>
-                <div>
-                  <textarea placeholder='Description' rows={5} columns={6} value={description} onChange={(e) => { setdescription(e.target.value) }}></textarea>
-                </div>
-                <div>
-                  <select style={{ width: '96%', padding: '8px 0px', border: 'none', borderRadius: '5px', cursor: 'pointer'}} name="" id="" onChange={(e) => {
-                    setowner(e.target.value)
-                  }}>
-                    <option value=''>Select Owner</option>
-                    {projectUsers?.map(op => (
-                      <option value={op._id}>{op.userName}</option>
-                    ))}
-                  </select>
-                </div>
-                <div style={{display: 'flex', justifyContent: 'flex-end', gap: '10px', margin: '5px'}}>
+          <div className='userStoryTasksContainer'>
+
+            <div className='userStoryDetails'>
+              {createWorkItem == true &&
+                <div className='userStoryCard'>
+
+                  <div >
+                    <textarea ref={textAreaRef} placeholder='Enter name' rows={5} columns={6} value={userStoryName} onChange={(e) => { setUsereStoryName(e.target.value) }}></textarea>
+
+                  </div>
                   <div>
-                    <button style={{ padding: '5px' }} onClick={() => {
-                      setUsereStoryName('')
-                      setdescription('')
-                      setowner('')
-                      dispatch(setcreateWorkItem(false))
-                    }}>Close</button>
+                    <textarea placeholder='Description' rows={5} columns={6} value={description} onChange={(e) => { setdescription(e.target.value) }}></textarea>
                   </div>
-                  <div style={{ display: (userStoryName !== '' && project._id !== undefined && owner !== '') ? 'block' : 'none' }}>
-                    <button style={{ padding: '5px', width: '50px' }} onClick={addUserStory}>Add</button>
+                  <div>
+                    <select style={{ width: '96%', padding: '8px 0px', border: '2px solid black', borderRadius: '5px', cursor: 'pointer' }} name="" id="" onChange={(e) => {
+                      setowner(e.target.value)
+                    }}>
+                      <option value=''>Select Owner</option>
+                      {projectUsers?.map(op => (
+                        <option value={op._id}>{op.userName}</option>
+                      ))}
+                    </select>
                   </div>
-                </div>
-           </div>}
-          </div>
-          {allUserStories?.map(au => (
-            <div style={{display: 'flex', gap: '10px'}}>
-              <IndividualUserStory projectId={project._id} au={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
-              <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
-                <CreatetaskItem users={users} userStory={au} setallUserStories={setallUserStories} projectId={project._id} allUserStories={allUserStories} />
-                {au.taskIds?.map(tasks => (
-                  <IndividualTaskCard tasks={tasks} projectId={project._id} userStory={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
-                ))}
-              </div>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', margin: '5px' }}>
+                    <div>
+                      <button style={{ padding: '5px' }} onClick={() => {
+                        setUsereStoryName('')
+                        setdescription('')
+                        setowner('')
+                        dispatch(setcreateWorkItem(false))
+                      }}>Close</button>
+                    </div>
+                    <div style={{ display: (userStoryName !== '' && project._id !== undefined && owner !== '') ? 'block' : 'none' }}>
+                      <button style={{ padding: '5px', width: '50px' }} onClick={addUserStory}>Add</button>
+                    </div>
+                  </div>
+                </div>}
             </div>
-          ))}
+            {allUserStories?.map(au => (
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <IndividualUserStory projectId={project._id} au={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+                <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
+                  <CreatetaskItem users={users} userStory={au} setallUserStories={setallUserStories} projectId={project._id} allUserStories={allUserStories} />
+                  {au.taskIds?.map(tasks => (
+                    <IndividualTaskCard tasks={tasks} projectId={project._id} userStory={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </>
       }
    </div>

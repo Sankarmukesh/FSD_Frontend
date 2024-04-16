@@ -2,7 +2,7 @@
     overflow: scroll;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0px;
     height: 78.5vh;
 }
 .userStoriesHeader{
@@ -50,6 +50,8 @@
     padding: 15px 50px;
     width: 300px;
     border-right: 1px solid var(--nav-head-bg);
+        border-bottom: 2px solid var(--nav-head-bg);
+
     justify-self: flex-start;
     white-space: nowrap;
 }
@@ -70,6 +72,11 @@
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 
 
+}
+.userStoryTasksContainer{
+    background: var(--status-header-bg);
+    width: 2490px !important;
+    padding: 5px;
 }
 .minimalUserStoryCard{
         height: 100px !important;

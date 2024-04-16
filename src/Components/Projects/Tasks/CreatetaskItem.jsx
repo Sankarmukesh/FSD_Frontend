@@ -73,10 +73,10 @@ const CreatetaskItem = ({ userStory, setallUserStories, projectId, allUserStorie
                       </div>
                       <div style={{ display: 'flex', gap: '5px', width: '96%', padding: '2px 0px', border: 'none', borderRadius: '5px', }}>
                           
-                          <input min={new Date().toISOString().split('T')[0]} type="date" name="" id="due" value={due} onChange={(e)=>setdue(e.target.value)} style={{width: '90%'}}/>
+                          <input min={new Date().toISOString().split('T')[0]} type="date" name="" id="due" value={due} onChange={(e) => setdue(e.target.value)} style={{ width: '90%', border: '2px solid black', }}/>
                       </div>
                   <div>
-                          <select style={{ width: '96%', padding: '8px 0px', border: 'none', borderRadius: '5px', cursor: 'pointer' }} name="" id="" onChange={(e) => {
+                          <select style={{ width: '96%', padding: '8px 0px', border: '2px solid black', borderRadius: '5px', cursor: 'pointer' }} name="" id="" onChange={(e) => {
                           setowner(e.target.value)
                       }}>
                           <option value=''>Select Owner</option>

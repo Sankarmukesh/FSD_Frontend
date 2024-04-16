@@ -23,7 +23,7 @@ body[data-theme="dark"] {
   --total-button--color: #fff;
   --total-button-disabled-bg: #04aa6d;
   --status-header-bg: #161b22;
-  --addingCard-bg: #161b22;
+  --addingCard-bg: #010409;
   --primary: #04aa6d;
   --signup-bg:#282a35;
 
@@ -34,7 +34,7 @@ body[data-theme="light"] {
     --project-team-bg: #d0d3d6;
 
   --status-header-bg: #e7ebef;
-    --addingCard-bg: #e7ebef;
+    --addingCard-bg: #f6f8fa;
 
   --total-button-disabled-bg: #04aa6d;
  --total-button-bg: #04aa6d;
