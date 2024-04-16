@@ -53,7 +53,7 @@ const UserCard = ({ d, allRoles }) => {
                   </select>
               </div>
               <div>
-                  <button disabled={updatedRole == ''} style={{ padding: '5px',  marginTop: '5px'}} onClick={updatedRole!=='' && updateRole}>Update Role</button>
+                  <button disabled={updatedRole == '' || d.role == updatedRole} style={{ padding: '5px',  marginTop: '5px'}} onClick={updatedRole!=='' && updateRole}>Update Role</button>
               </div>
           </div>
     </div>
