@@ -17,6 +17,7 @@ const UserCard = ({ d, allRoles }) => {
                     bgColor: ToastColors.success,
                     visible: "yes",
                 }))
+                setUpdatedRole('')
             }).catch(err => {
                 dispatch(setToast({
                     message: "Error occured !",
