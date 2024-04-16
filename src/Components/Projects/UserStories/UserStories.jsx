@@ -60,9 +60,9 @@ const UserStories = () => {
     })
   }, [])
 
-  
+
   const addUserStory = async () => {
-    if (userStoryName !== '' && project._id !== undefined && owner!=='') {
+    if (userStoryName !== '' && project._id !== undefined && owner !== '') {
       await ApiServices.addUserStory({ projectId: project._id, name: userStoryName, description: description, owner: owner, user_id: user_id }).then(res => {
         setallUserStories(prev => [res.data, ...prev])
         dispatch(setcreateWorkItem(false))
@@ -84,17 +84,18 @@ const UserStories = () => {
     <div style={{ padding: '0px 10px 10px 10px' }} className='userStoriesHeaderContainer'>
       {
         project._id !== undefined &&
-        <><div className='userStoriesHeader'>
-          <div>User Stories</div>
-          {taskStatuses.map(ts => (
-            <div>{ts.status}</div>
-          ))}
+        <>
+          <div className='userStoriesHeader'>
+            <div>User Stories</div>
+            {taskStatuses.map(ts => (
+              <div>{ts.status}</div>
+            ))}
 
-        </div>
+          </div>
           <div className='userStoryTasksContainer'>
-
-            <div className='userStoryDetails'>
-              {createWorkItem == true &&
+            {createWorkItem == true && <div className='userStoryBoxContainer' style={{ width: '233px', marginBottom: '2px' }}>
+              <div className='userStoryDetails'>
+                
                 <div className='userStoryCard'>
 
                   <div >
@@ -127,23 +128,29 @@ const UserStories = () => {
                       <button style={{ padding: '5px', width: '50px' }} onClick={addUserStory}>Add</button>
                     </div>
                   </div>
-                </div>}
-            </div>
-            {allUserStories?.map(au => (
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <IndividualUserStory projectId={project._id} au={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
-                <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
-                  <CreatetaskItem users={users} userStory={au} setallUserStories={setallUserStories} projectId={project._id} allUserStories={allUserStories} />
-                  {au.taskIds?.map(tasks => (
-                    <IndividualTaskCard tasks={tasks} projectId={project._id} userStory={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
-                  ))}
                 </div>
               </div>
-            ))}
+            </div>}
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+              {allUserStories?.map(au => (
+                <div style={{ display: 'flex', gap: '2px'}}>
+                  <div className='userStoryBoxContainer'>
+                    <IndividualUserStory projectId={project._id} au={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+                  </div>
+                  <div className='userStoryBoxContainer' style={{ display: 'flex', gap: '10px', flexDirection: 'column', paddingTop: '5px', minWidth: '2250px' }}>
+                    <CreatetaskItem users={users} userStory={au} setallUserStories={setallUserStories} projectId={project._id} allUserStories={allUserStories} />
+                    {au.taskIds?.map(tasks => (
+                        <IndividualTaskCard tasks={tasks} projectId={project._id} userStory={au} setallUserStories={setallUserStories} allUserStories={allUserStories} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </>
       }
-   </div>
+    </div>
   )
 }
 

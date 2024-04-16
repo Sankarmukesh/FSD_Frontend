@@ -40,10 +40,10 @@
 .userStoriesHeader, .userStoryDetails {
     display: flex;
     /* width: 100%; */
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
 }
 .userStoriesHeader{
-    width: 2500px !important;
+    width: 2505px !important;
 }
 .userStoriesHeader div {
     background: var(--status-header-bg);
@@ -74,9 +74,14 @@
 
 }
 .userStoryTasksContainer{
-    background: var(--status-header-bg);
+    /* background: var(--status-header-bg); */
     width: 2490px !important;
-    padding: 5px;
+    /* padding: 5px; */
+}
+
+.userStoryBoxContainer {
+    background: var(--status-header-bg);
+    padding: 5px 5px 5px 5px;
 }
 .minimalUserStoryCard{
         height: 100px !important;
