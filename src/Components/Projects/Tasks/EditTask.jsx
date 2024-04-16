@@ -36,6 +36,8 @@ const EditTask = ({ }) => {
     }, [])
     const [isLoading, setIsLoading] = useState(false);
     const [IndividualTask, setIndividualTask] = useState(null)
+    const [OldTaskData, setOldTaskData] = useState(null)
+
     const { projectId, userStoryId, taskId } = useParams()
     const navigate = useNavigate()
     const projectUsers = useSelector(
@@ -52,6 +54,7 @@ const EditTask = ({ }) => {
         if (taskId) {
             ApiServices.getSingleTasks({ taskId: taskId }).then(res => {
                 setIndividualTask(res.data)
+                setOldTaskData(res.data)
             }).catch(err => {
                 dispatch(
                     setToast({
@@ -255,7 +258,7 @@ const EditTask = ({ }) => {
                         </div>
                         <div style={{ padding: '10px' }}>
                             <button
-                                disabled={IndividualTask?.name === '' || IndividualTask?.description === '' || isLoading}
+                                disabled={(IndividualTask?.name == OldTaskData?.name && IndividualTask?.description == OldTaskData?.description && IndividualTask?.owner?._id == OldTaskData?.owner?._id && IndividualTask?.status == OldTaskData?.status && IndividualTask?.due==OldTaskData?.due) || isLoading}
                                 onClick={updateTasks}
                                 style={{ whiteSpace: 'nowrap', position: 'relative' }}
                             >

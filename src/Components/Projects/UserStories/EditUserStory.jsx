@@ -38,6 +38,7 @@ const EditUserStory = ({ }) => {
     }, [])
 
     const [userStory, setUserStory] = useState(null)
+    const [OldTaskData, setOldTaskData] = useState(null)
     const { projectId, userStoryId } = useParams()
     const navigate = useNavigate()
 
@@ -52,6 +53,7 @@ const EditUserStory = ({ }) => {
         if (userStoryId) {
             ApiServices.getsingleUserStory({ userStoryId: userStoryId }).then(res => {
                 setUserStory(res.data)
+                setOldTaskData(res.data)
             }).catch(err => {
                 dispatch(
                     setToast({
@@ -238,7 +240,7 @@ const EditUserStory = ({ }) => {
                       </div>
                       <div style={{ padding: '10px' }}>
                           <button
-                              disabled={userStory?.name === '' || userStory?.description === '' || isLoading}
+                              disabled={(userStory?.name == OldTaskData?.name && userStory?.description == OldTaskData?.description && userStory?.owner?._id == OldTaskData?.owner?._id && userStory?.status==OldTaskData?.status) || isLoading}
                               onClick={updateUserStory}
                               style={{ whiteSpace: 'nowrap', position: 'relative' }}
                           >
@@ -288,7 +290,7 @@ const EditUserStory = ({ }) => {
                       <div style={{ display: 'flex', gap: '8px', flexDirection: 'column' }}>
                           { userStory?.taskIds?.length > 0 && <div style={{fontSize: '18px', fontWeight: '600'}}>Associated Tasks</div>}
                           {userStory?.taskIds?.map(ts => (
-                              <div style={{ display: 'flex', gap: '5px', cursor: 'pointer' }} onClick={() => navigate(`/task/${projectId}/${userStory._id}/${ts._id}/edit`)}>
+                              <div style={{ display: 'flex', gap: '5px', cursor: 'pointer' }} onClick={() => navigate(`/task/${projectId}/${userStory?._id}/${ts._id}/edit`)}>
                                   <div>
                                       {(ts?.owner?.image !== undefined && ts?.owner?.image !== '' && ts?.owner?.image.url !== "") ?
                                         <ImageGenerator userName={ts?.owner?.userName} img={ts?.owner?.image.url} sizes={{height:'50px', width: '50px'}} />
