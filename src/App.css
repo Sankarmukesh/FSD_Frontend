@@ -21,7 +21,7 @@ body[data-theme="dark"] {
   --total-button-bg: #04aa6d;
   --button-hover: #037451;
   --total-button--color: #fff;
-  --total-button-disabled-bg: #04aa6d;
+  --total-button-disabled-bg: #3e5d5229;
   --status-header-bg: #161b22;
   --addingCard-bg: #010409;
   --primary: #04aa6d;
@@ -36,7 +36,8 @@ body[data-theme="light"] {
   --status-header-bg: #e7ebef;
     --addingCard-bg: #f6f8fa;
 
-  --total-button-disabled-bg: #04aa6d;
+    --total-button-disabled-bg: #3e5d5229;
+
  --total-button-bg: #04aa6d;
   --button-hover: #037451;
   --singleUserCard-bg: #e7ebef;
