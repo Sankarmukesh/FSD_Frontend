@@ -502,7 +502,7 @@ input {
   flex-direction: column;
 }
 .login-hero {
-  padding: 30px;
+  /* padding: 30px; */
 }
 .login-form-section {
    margin-left: 0px;
