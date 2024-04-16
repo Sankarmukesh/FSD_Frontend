@@ -42,11 +42,14 @@
     /* width: 100%; */
     margin-bottom: 8px;
 }
-
+.userStoriesHeader{
+    width: 2500px !important;
+}
 .userStoriesHeader div {
     background: var(--status-header-bg);
     padding: 15px 50px;
-    width: 250px;
+    width: 300px;
+    border-right: 1px solid var(--nav-head-bg);
     justify-self: flex-start;
     white-space: nowrap;
 }
