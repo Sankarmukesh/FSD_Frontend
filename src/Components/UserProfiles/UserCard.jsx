@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import NameGenerator from '../Common/NameGenerator'
 import { ApiServices } from '../../Services/ApiServices'
 import { useDispatch, useSelector } from "react-redux";
 import { setToast } from '../../redux/AuthReducers/AuthReducer';
 import { ToastColors } from '../Toast/ToastColors';
+import { socket_io } from '../../Utils';
 
+import { io } from "socket.io-client";
 const UserCard = ({ d, allRoles }) => {
     const [updatedRole, setUpdatedRole] = useState('')
     const dispatch = useDispatch()
+
+    // intialize socket io
+    const socket = useRef();
+    useEffect(() => {
+        socket.current = io(socket_io);
+    }, []);
+
     const updateRole = async () => {
         if (updatedRole !== '') {
             await ApiServices.changeUserRoles({ id: d?._id, role: updatedRole }).then(res => {
@@ -18,6 +27,7 @@ const UserCard = ({ d, allRoles }) => {
                     visible: "yes",
                 }))
                 setUpdatedRole('')
+                socket.current.emit("roleChangeReq", d?._id, updatedRole);
             }).catch(err => {
                 dispatch(setToast({
                     message: "Error occured !",

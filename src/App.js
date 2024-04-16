@@ -13,6 +13,7 @@ import {
   setToast,
 } from "./redux/AuthReducers/AuthReducer";
 import { io } from "socket.io-client";
+import { Dialog, DialogTitle, DialogContent, DialogContentText } from '@mui/material';
 
 import LoadingData from "./Components/Toast/Loading";
 import { socket_io } from "./Utils";
@@ -110,6 +111,18 @@ const App = () => {
     });
   }, []);
 
+
+  const [roleChangeOpen, setroleChangeOpen] = useState(false)
+  const [roleChangeto, setroleChangeto] = useState('')
+
+
+  useEffect(() => {
+    socket.current.on("roleChanged", (role) => {
+      setroleChangeto(role)
+      setroleChangeOpen(true)
+    });
+  }, []);
+
   //IT IS FOR DARK AND WHITE THEME
   useEffect(() => {
     if (!localStorage.getItem('theme')) {
@@ -148,6 +161,19 @@ const App = () => {
 
 
         </Routes>
+        <Dialog fullWidth
+          open={roleChangeOpen}
+          onClose={()=>{window.location.reload()}}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+
+        >
+          <div style={{padding:'10px'}}>
+            <p>Admin has changed your role to {roleChangeto}. Please refresh the page.</p>
+            <button onClick={() => window.location.reload()} style={{float: 'right'}}>close</button>
+          </div>
+
+        </Dialog>
       </Suspense>
     </div>
   );
