@@ -59,14 +59,17 @@ const Projects = () => {
           if(localStorage.getItem('project')){
             if(res.data?.filter(f => f._id == JSON.parse(localStorage.getItem('project'))._id)[0]!==undefined){
               setSelectedProject(res.data?.filter(f => f._id == JSON.parse(localStorage.getItem('project'))._id)[0])
+              dispatch(setProjectUsers(res.data?.find(f => f?._id?.toString() == JSON.parse(localStorage.getItem('project'))?._id?.toString())?.teamMembers || []))
               localStorage.setItem('project', JSON.stringify(res.data?.filter(f => f._id == JSON.parse(localStorage.getItem('project'))._id)[0]))
             } else {
               setSelectedProject(res.data[0])
+              dispatch(setProjectUsers(res.data[0].teamMembers || []))
               localStorage.setItem('project', JSON.stringify(res.data[0]))
             }
            
           } else {
             setSelectedProject(res.data[0])
+            dispatch(setProjectUsers(res.data[0].teamMembers || []))
             localStorage.setItem('project', JSON.stringify(res.data[0]))
           }
         }
