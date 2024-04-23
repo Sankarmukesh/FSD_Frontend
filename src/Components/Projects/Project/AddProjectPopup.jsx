@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,12 +7,17 @@ import { setToast } from '../../../redux/AuthReducers/AuthReducer';
 import { ToastColors } from '../../Toast/ToastColors';
 import { setProjectId, setProjectUsers } from '../../../redux/ProjectsReducers/ProjectReducer';
 import CloseIcon from '@mui/icons-material/Close';
-
-
+import { io } from "socket.io-client";
+import { socket_io } from "../../../Utils";
 const AddProjectPopup = ({ count, open, setOpen, setAllProjects, type, selectedProject, allProjects, setSelectedProject }) => {
     const { email, image, user_id, userName } = useSelector(
         (store) => store.auth.loginDetails
     );
+    const socket = useRef();
+  
+    useEffect(() => {
+      socket.current = io(socket_io);
+    }, []);
     const [sendingEmail, setSendingEmail] = useState([])
     const [deletingEmail, setdeletingEmail] = useState([])
 
@@ -60,6 +65,11 @@ const AddProjectPopup = ({ count, open, setOpen, setAllProjects, type, selectedP
     const addingProject = async () => {
         await ApiServices.addProject({ name: projectName, teamMembers: teamMembers, sendingEmail: sendingEmail }).then(res => {
             setAllProjects((prev) => [...prev, res.data])
+            // teamMembers for this teamMembers we need to send all the socket.emit projectAssigned
+            teamMembers.map((t) => {
+                socket.current.emit("projectAssigned", t._id, res.data._id, res.data.name)
+            }
+            )
             setProjectName('')
             dispatch(
                 setToast({
@@ -90,6 +100,15 @@ const AddProjectPopup = ({ count, open, setOpen, setAllProjects, type, selectedP
         await ApiServices.updateProject({ projectId: selectedProject._id, name: projectName, teamMembers: teamMembers, sendingEmail: sendingEmail, deletingEmail: deletingEmail }).then(res => {
             // console.log(allProjects.map(a => a._id == selectedProject._id ? { ...a, name: projectName } : a));
             setAllProjects(allProjects.map(a => a._id == selectedProject._id ? { ...a, name: projectName, teamMembers: teamMembers } : a))
+            // teamMembers for this teamMembers we need to send all the socket.emit projectAssigned
+            deletingEmail.map((t) => {
+                socket.current.emit("projectAssigned", t._id, selectedProject._id, projectName)
+            }
+            )
+            teamMembers.map((t) => {
+                socket.current.emit("projectAssigned", t._id, selectedProject._id, projectName)
+            }
+            )
             dispatch(
                 setToast({
                     message: "Project Updated",

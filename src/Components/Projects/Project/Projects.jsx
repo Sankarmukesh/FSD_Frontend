@@ -7,11 +7,12 @@ import { useSelector } from 'react-redux';
 import './Projects.css'
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import AddProjectPopup from './AddProjectPopup';
-import { setProjectUsers, setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReducer';
+import { setAddedToProject, setProjectUsers, setcreateWorkItem } from '../../../redux/ProjectsReducers/ProjectReducer';
 const Projects = () => {
   const { email, image, user_id, userName, role } = useSelector(
     (store) => store.auth.loginDetails
   );
+  const addedToProject = useSelector((store) => store.proj.addedToProject);
   const [count, setCount] = useState(0);
   const [allProjects, setAllProjects] = useState('')
   const [selectedProject, setSelectedProject] = useState({})
@@ -48,6 +49,24 @@ const Projects = () => {
       );
     })
   }, [])
+
+  useEffect(() => {
+    if (addedToProject) {
+      ApiServices.getProjects({role, user_id}).then(res => {
+        setAllProjects(res.data)
+        dispatch(setAddedToProject(null));
+      }
+      ).catch(err => {
+        dispatch(
+          setToast({
+            message: "Error occured !",
+            bgColor: ToastColors.failure,
+            visible: "yes",
+          })
+        );
+      })
+    }
+  }, [addedToProject])
   useEffect(() => {
     if (localStorage.getItem('project') && allProjects.length > 0 && allProjects?.filter(f => f._id == JSON.parse(localStorage.getItem('project'))._id).length>0) {
       setSelectedProject(JSON.parse(localStorage.getItem('project')))

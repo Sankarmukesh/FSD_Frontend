@@ -20,7 +20,7 @@ import { socket_io } from "./Utils";
 import UserProfiles from "./Components/UserProfiles/UserProfiles";
 import EditUserStory from "./Components/Projects/UserStories/EditUserStory";
 import EditTask from "./Components/Projects/Tasks/EditTask";
-import { setProjectUsers } from "./redux/ProjectsReducers/ProjectReducer";
+import { setAddedToProject, setProjectUsers } from "./redux/ProjectsReducers/ProjectReducer";
 import { ApiServices } from "./Services/ApiServices";
 import { ToastColors } from "./Components/Toast/ToastColors";
 
@@ -101,6 +101,15 @@ const App = () => {
     }
 
   }, [localStorage.getItem('user')])
+
+  // when a socket emit projectAssigned event we need to update a redux state
+  useEffect(() => {
+    socket.current.on("projectAssigned", (project) => {
+      console.log(project);
+      dispatch(setAddedToProject(project));
+    });
+  }, []);
+
 
   // live message updates
   useEffect(() => {
