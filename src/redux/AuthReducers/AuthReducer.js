@@ -51,6 +51,8 @@ export const apicallloginDetails = () => async (dispatch) => {
       dispatch(setLoading({ visible: 'no' }))
     }).catch(async (err) => {
       localStorage.removeItem('user')
+      localStorage.removeItem("project");
+
       window.location.href = '/login'
       // await ApiServices.refreshToken({ refreshToken: JSON.parse(localStorage.getItem('user')).refreshToken }).then((res) => {
       //   localStorage.setItem('user', JSON.stringify(res.data))

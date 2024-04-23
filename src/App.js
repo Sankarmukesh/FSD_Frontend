@@ -115,6 +115,8 @@ const App = () => {
   useEffect(() => {
     socket.current.on("allDeviceLogout", () => {
       localStorage.removeItem("user");
+      localStorage.removeItem("project");
+
       localStorage.clear();
       window.location.href = "/login";
     });

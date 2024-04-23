@@ -116,10 +116,14 @@ const Navbar = () => {
 
       });
       localStorage.removeItem("user");
+      localStorage.removeItem("project");
+
       localStorage.clear();
       window.location.href = "/login";
     } else if (value == 'Single') {
       localStorage.removeItem("user");
+      localStorage.removeItem("project");
+
       localStorage.clear();
       window.location.href = "/login";
     }
