@@ -61,7 +61,7 @@ const TaskComments = ({ us }) => {
                         name="message"
                         placeholder="Description"
                     ></textarea>
-                    {us?.commentBy?._id == user_id && <div style={{ cursor: 'pointer' }} onClick={updateTaskComment}><SendIcon disabled={oldComment==newComment || newComment==''}/></div>}
+                    {us?.commentBy?._id == user_id && <div style={{ cursor: (oldComment==newComment || newComment=='')? 'not-allowed' : 'pointer' }} onClick={(oldComment==newComment || newComment=='')?'':updateTaskComment}><SendIcon /></div>}
                 </div>
             </div>
         </div>

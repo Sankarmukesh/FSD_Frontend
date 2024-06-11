@@ -276,7 +276,7 @@ const EditUserStory = ({ }) => {
                                           name="message"
                                           placeholder="Description"
                                       ></textarea>
-                                      <div style={{ cursor: 'pointer' }} onClick={addUserStoryComment}><SendIcon disabled={newComment==''}/></div>
+                                      <div style={{ cursor:  newComment==''? 'not-allowed' :'pointer', color: 'lightgray' }} onClick={newComment==''? '' :addUserStoryComment}><SendIcon /></div>
                                   </div>
                               </div>
                               {userStoryComment?.map(us => (
