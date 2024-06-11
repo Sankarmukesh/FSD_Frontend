@@ -281,7 +281,7 @@ const EditTask = ({ }) => {
                                         {(image !== undefined && image !== "") ?
                                             <ImageGenerator userName={userName} img={image} sizes={{ height: '50px', width: '50px' }} />
 
-                                           : <NameGenerator userName={userName} sizes={{ height: '60px', width: '60px', fontSize: '26px' }} />}
+                                           : <NameGenerator userName={userName} sizes={{ height: '40px', width: '40px', fontSize: '26px' }} />}
 
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', }}>
