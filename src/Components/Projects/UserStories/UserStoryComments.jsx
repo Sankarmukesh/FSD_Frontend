@@ -9,10 +9,12 @@ import ImageGenerator from '../../Common/ImageGenerator';
 
 const UserStoryComments = ({ us }) => {
     const [newComment, setNewComment] = useState('')
+    const [oldComment, setoldComment] = useState('')
 
     useEffect(() => {
         if (us.comment !== undefined) {
             setNewComment(us.comment)
+            setoldComment(us.comment)
         }
     }, [us])
     const { email, image, user_id, userName } = useSelector(
@@ -22,6 +24,7 @@ const UserStoryComments = ({ us }) => {
     const updateuserStoryComment = async () => {
         await ApiServices.updateUserStoryComments({ userStoryCommentId: us._id, comment: newComment }).then(res => {
             us.comment = newComment
+            setoldComment(newComment)
             dispatch(setToast({
                 message: 'Comment updated',
                 bgColor: ToastColors.success,
@@ -57,7 +60,7 @@ const UserStoryComments = ({ us }) => {
                       name="message"
                       placeholder="Description"
                   ></textarea>
-                  {us?.commentBy?._id == user_id && <div style={{ cursor: 'pointer' }} onClick={updateuserStoryComment}><SendIcon /></div>}
+                  {us?.commentBy?._id == user_id && <div style={{ cursor: 'pointer' }} onClick={updateuserStoryComment}><SendIcon disabled={oldComment==newComment || newComment==''}/></div>}
               </div>
           </div>
     </div>

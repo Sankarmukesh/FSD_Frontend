@@ -294,7 +294,7 @@ const EditTask = ({ }) => {
                                             name="message"
                                             placeholder="Description"
                                         ></textarea>
-                                        <div style={{ cursor: 'pointer' }} onClick={addTaskComment}><SendIcon /></div>
+                                        <div style={{ cursor: 'pointer' }} onClick={addTaskComment}><SendIcon disabled={newComment==''}/></div>
                                     </div>
                                 </div>
                                 {IndividualTaskComment?.map(us => (

@@ -9,10 +9,13 @@ import ImageGenerator from '../../Common/ImageGenerator';
 
 const TaskComments = ({ us }) => {
     const [newComment, setNewComment] = useState('')
+    const [oldComment, setoldComment] = useState('')
+
 
     useEffect(() => {
         if (us.comment !== undefined) {
             setNewComment(us.comment)
+            setoldComment(us.comment)
         }
     }, [us])
     const { email, image, user_id, userName } = useSelector(
@@ -22,6 +25,7 @@ const TaskComments = ({ us }) => {
     const updateTaskComment = async () => {
         await ApiServices.updatetaskComments({ taskId: us._id, comment: newComment }).then(res => {
             us.comment = newComment
+            setoldComment(newComment)
             dispatch(setToast({
                 message: 'Comment updated',
                 bgColor: ToastColors.success,
@@ -57,7 +61,7 @@ const TaskComments = ({ us }) => {
                         name="message"
                         placeholder="Description"
                     ></textarea>
-                    {us?.commentBy?._id == user_id && <div style={{ cursor: 'pointer' }} onClick={updateTaskComment}><SendIcon /></div>}
+                    {us?.commentBy?._id == user_id && <div style={{ cursor: 'pointer' }} onClick={updateTaskComment}><SendIcon disabled={oldComment==newComment || newComment==''}/></div>}
                 </div>
             </div>
         </div>
