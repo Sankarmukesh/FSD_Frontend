@@ -22,6 +22,11 @@ const UserStoryComments = ({ us }) => {
     const updateuserStoryComment = async () => {
         await ApiServices.updateUserStoryComments({ userStoryCommentId: us._id, comment: newComment }).then(res => {
             us.comment = newComment
+            dispatch(setToast({
+                message: 'Comment updated',
+                bgColor: ToastColors.success,
+                visible: "yes",
+            }))
         }).catch(err => {
             dispatch(
                 setToast({
